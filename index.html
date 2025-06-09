@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AffiJobs - Earn Money Sharing Jobs</title>
+    <title>Quick-Jobs - Earn Money Sharing Jobs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -1066,7 +1066,7 @@
     <!-- Loading Screen -->
     <div class="loading-screen">
         <div class="loader"></div>
-        <div class="loading-text">Loading AffiJobs...</div>
+        <div class="loading-text">Loading Quick-Jobs...</div>
     </div>
 
     <!-- Dark Mode Toggle -->
@@ -1084,7 +1084,7 @@
         <div class="page" id="login-page">
             <div class="auth-container">
                 <div class="auth-card">
-                    <div class="auth-logo">AJ</div>
+                    <div class="auth-logo">QJ</div>
                     <h1 class="auth-title">Welcome Back</h1>
                     <p class="auth-subtitle">Sign in to your account to continue earning</p>
                     
@@ -1115,9 +1115,9 @@
         <div class="page" id="register-page">
             <div class="auth-container">
                 <div class="auth-card">
-                    <div class="auth-logo">AJ</div>
+                    <div class="auth-logo">QJ</div>
                     <h1 class="auth-title">Create Account</h1>
-                    <p class="auth-subtitle">Join AffiJobs and start earning today</p>
+                    <p class="auth-subtitle">Join Quick-Jobs and start earning today</p>
                     
                     <form id="register-form">
                         <div class="alert alert-danger" id="register-error" style="display: none;"></div>
@@ -1167,7 +1167,7 @@
                     <img src="https://ui-avatars.com/api/?name=John+Doe&background=4361ee&color=fff&size=80" alt="Profile Avatar" class="profile-avatar" id="profile-avatar">
                     <div class="profile-info">
                         <h2 id="profile-name">John Doe</h2>
-                        <p id="profile-phone">+254 712 345 678</p>
+                        <p id="profile-phone"> 0712 345 678</p>
                         <div class="profile-stats">
                             <div class="stat-item">
                                 <div class="stat-number" id="links-shared">0</div>
@@ -1190,7 +1190,7 @@
                 <div class="progress-bar">
                     <div class="progress" id="progress-bar"></div>
                 </div>
-                <div class="progress-text" id="progress-text">0 of 5000 points (0%)</div>
+                <div class="progress-text" id="progress-text">0 of 2000 points (0%)</div>
 
                 <h3 class="history-title">Transaction History</h3>
                 <div class="card">
@@ -1216,7 +1216,7 @@
                 <div class="banner">
                     <div class="banner-content">
                         <h2 class="banner-title">Invite Your Friends & Earn 1000 Bonus Points!</h2>
-                        <p class="banner-text">Share your referral link with friends and earn 1000 bonus points when they sign up and share their first job.</p>
+                        <p class="banner-text">https://ledama254.github.io/aa/.</p>
                         <button class="banner-btn" id="invite-btn">Share Now</button>
                     </div>
                 </div>
@@ -1231,7 +1231,7 @@
         <!-- Home Page -->
         <div class="page" id="home-page">
             <div class="section">
-                <h1 class="section-title">Welcome to AffiJobs</h1>
+                <h1 class="section-title">Welcome to QuickJobs</h1>
                 <p>Earn money by sharing job opportunities with your network. Get started today!</p>
                 
                 <div class="card" style="margin-top: 2rem;">
@@ -1240,7 +1240,7 @@
                         <li style="margin-bottom: 0.5rem;">Browse available jobs</li>
                         <li style="margin-bottom: 0.5rem;">Share jobs with your network</li>
                         <li style="margin-bottom: 0.5rem;">Earn Ksh 100 per share</li>
-                        <li style="margin-bottom: 0.5rem;">Withdraw your earnings when you reach Ksh 5000</li>
+                        <li style="margin-bottom: 0.5rem;">Withdraw your earnings when you reach Ksh 2000</li>
                     </ol>
                 </div>
                 
@@ -1273,7 +1273,7 @@
                 <span class="modal-close" id="withdraw-modal-close">&times;</span>
             </div>
             <div class="modal-body">
-                <p id="withdraw-message">You need at least Ksh 5000 to withdraw your earnings. Keep sharing to reach the limit!</p>
+                <p id="withdraw-message">You need at least Ksh 2000 to withdraw your earnings. Keep sharing to reach the limit!</p>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" id="withdraw-confirm-btn">Continue to WhatsApp</button>
@@ -1622,16 +1622,16 @@
             progressText.textContent = `${points} of 5000 points (${Math.round(percentage)}%)`;
             
             // Add pulse animation to withdraw button when threshold is reached
-            if (points >= 2500 && points < 5000) {
+            if (points >= 2000 && points < 5000) {
                 withdrawBtn.classList.add('btn-pulse');
-            } else if (points >= 5000) {
+            } else if (points >= 2000) {
                 withdrawBtn.classList.add('btn-pulse');
             } else {
                 withdrawBtn.classList.remove('btn-pulse');
             }
             
             // Trigger confetti when reaching milestones
-            if (points === 2500 || points === 5000) {
+            if (points === 2000 || points === 5000) {
                 createConfetti();
             }
         }
@@ -1826,8 +1826,8 @@
         }
 
         function openWithdrawModal() {
-            if (balance < 5000) {
-                withdrawMessage.textContent = 'Limit not reached. You need at least Ksh 5000 to withdraw. Keep sharing to withdraw!';
+            if (balance < 2000) {
+                withdrawMessage.textContent = 'Limit not reached. You need at least Ksh 2000 to withdraw. Keep sharing to withdraw!';
                 withdrawConfirmBtn.style.display = 'none';
             } else {
                 withdrawMessage.textContent = `You're about to withdraw Ksh ${balance.toLocaleString()}. Continue to WhatsApp to request your payment.`;
