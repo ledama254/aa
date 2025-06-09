@@ -1216,7 +1216,7 @@
                 <div class="banner">
                     <div class="banner-content">
                         <h2 class="banner-title">Invite Your Friends & Earn 1000 Bonus Points!</h2>
-                        <p class="banner-text">https://ledama254.github.io/aa/.</p>
+                        <p class="banner-text">Share your referral link with friends and earn 1000 bonus points when they sign up and share their first job</p>
                         <button class="banner-btn" id="invite-btn">Share Now</button>
                     </div>
                 </div>
@@ -1307,7 +1307,7 @@
         let currentUser = null;
         let currentPage = 'home';
         let balanceAnimationInterval = null;
-        let balance = 2000; // Starting balance
+        let balance = 200; // Starting balance
         let points = 0;
         let linksShared = 0;
         let transactionHistory = [];
@@ -1842,34 +1842,34 @@
         }
 
         function shareJob(jobId, platform) {
-            const job = jobs.find(j => j.id === jobId);
-            if (!job) return;
-            
-            let shareUrl, shareText;
-            
-            if (platform === 'whatsapp') {
-                shareText = `Check out this job opportunity: ${job.title} - ${job.description}. Earn money by sharing jobs with AffiJobs!`;
-                shareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
-            } else {
-                shareText = `Earn money by sharing this job: ${job.title}`;
-                shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://affijobs.com/job/' + jobId)}&quote=${encodeURIComponent(shareText)}`;
-            }
-            
-            // Add transaction
-            addTransaction(job, platform);
-            
-            // Open share URL in new tab
-            window.open(shareUrl, '_blank');
-            
-            // Close modal
-            closeShareModal();
-        }
+    const job = jobs.find(j => j.id === jobId);
+    if (!job) return;
 
-        function shareInvite() {
-            const shareText = `Join AffiJobs and start earning money by sharing job opportunities! Sign up now and get 1000 bonus points when you share your first job.`;
-            const shareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
-            window.open(shareUrl, '_blank');
-        }
+    let shareUrl, shareText;
+
+    // Custom message for both platforms
+    const message = `Apply affiliate jobs here and earn 100 per share!\n\nClick to apply: https://affijobs.com/apply`;
+
+    if (platform === 'whatsapp') {
+        shareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+    } else {
+        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://affijobs.com/apply')}&quote=${encodeURIComponent(message)}`;
+    }
+
+    // Add transaction
+    addTransaction(job, platform);
+
+    // Open share URL in new tab
+    window.open(shareUrl, '_blank');
+}
+
+            
+           function shareInvite() {
+    const message = `🔥 Join AffiJobs today and earn money by sharing job links! 💰\n\nSign up now and get 1000 bonus points instantly.\n\nClick here to join: https://affijobs.com/register`;
+    const shareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+    window.open(shareUrl, '_blank');
+}
+
 
         function toggleDarkMode() {
             darkMode = !darkMode;
