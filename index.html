@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AffiJobs - Earn From Sharing</title>
+    <title>AffiJobs - Earn by Sharing</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* CSS Reset and Base Styles */
@@ -21,26 +19,9 @@
             --success-color: #4bb543;
             --warning-color: #f0ad4e;
             --danger-color: #d9534f;
-            --info-color: #5bc0de;
             --border-radius: 12px;
-            --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
-            --max-width: 1200px;
-        }
-
-        [data-theme="dark"] {
-            --primary-color: #4895ef;
-            --primary-dark: #3a56d4;
-            --secondary-color: #4361ee;
-            --accent-color: #3f37c9;
-            --light-color: #212529;
-            --dark-color: #f8f9fa;
-            --gray-color: #adb5bd;
-            --success-color: #5cb85c;
-            --warning-color: #f0ad4e;
-            --danger-color: #d9534f;
-            --info-color: #5bc0de;
-            --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
 
         * {
@@ -49,152 +30,103 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-        }
-
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--light-color);
-            color: var(--dark-color);
             line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f5f7ff;
             transition: var(--transition);
             overflow-x: hidden;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+        }
+
+        body.dark-mode {
+            background-color: #121212;
+            color: #f5f5f5;
+        }
+
+        body.dark-mode .card,
+        body.dark-mode .modal-content,
+        body.dark-mode .navbar,
+        body.dark-mode .bottom-navbar {
+            background-color: #1e1e1e;
+            color: #f5f5f5;
+            border-color: #333;
+        }
+
+        body.dark-mode .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-mode input,
+        body.dark-mode select,
+        body.dark-mode textarea {
+            background-color: #2d2d2d;
+            color: #f5f5f5;
+            border-color: #444;
+        }
+
+        body.dark-mode .table {
+            color: #f5f5f5;
+        }
+
+        body.dark-mode .table th,
+        body.dark-mode .table td {
+            border-color: #444;
+        }
+
+        body.dark-mode .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(255, 255, 255, 0.05);
         }
 
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Montserrat', sans-serif;
             font-weight: 600;
             margin-bottom: 1rem;
-            color: var(--dark-color);
-        }
-
-        p {
-            margin-bottom: 1rem;
         }
 
         a {
             text-decoration: none;
             color: var(--primary-color);
-            transition: var(--transition);
-        }
-
-        a:hover {
-            color: var(--primary-dark);
         }
 
         img {
             max-width: 100%;
             height: auto;
-            display: block;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        button, input, textarea, select {
-            font-family: inherit;
-            font-size: inherit;
-        }
-
-        button {
-            cursor: pointer;
-            border: none;
-            outline: none;
-            background: none;
         }
 
         .container {
             width: 100%;
-            max-width: var(--max-width);
+            padding: 0 15px;
             margin: 0 auto;
-            padding: 0 1.5rem;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: var(--border-radius);
-            font-weight: 500;
+        @media (min-width: 576px) {
+            .container {
+                max-width: 540px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 720px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .container {
+                max-width: 960px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1140px;
+            }
+        }
+
+        /* Utility Classes */
+        .text-center {
             text-align: center;
-            transition: var(--transition);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border: 2px solid transparent;
-        }
-
-        .btn:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .btn:active {
-            transform: translateY(0);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .btn-sm {
-            padding: 0.5rem 1rem;
-            font-size: 0.875rem;
-        }
-
-        .btn-lg {
-            padding: 1rem 2rem;
-            font-size: 1.125rem;
-        }
-
-        .btn-block {
-            display: block;
-            width: 100%;
-        }
-
-        .btn-success {
-            background-color: var(--success-color);
-        }
-
-        .btn-success:hover {
-            background-color: #3fa037;
-        }
-
-        .btn-warning {
-            background-color: var(--warning-color);
-        }
-
-        .btn-warning:hover {
-            background-color: #eea236;
-        }
-
-        .btn-danger {
-            background-color: var(--danger-color);
-        }
-
-        .btn-danger:hover {
-            background-color: #c9302c;
-        }
-
-        .btn-info {
-            background-color: var(--info-color);
-        }
-
-        .btn-info:hover {
-            background-color: #46b8da;
         }
 
         .text-primary {
@@ -213,98 +145,35 @@
             color: var(--danger-color);
         }
 
-        .text-info {
-            color: var(--info-color);
+        .bg-primary {
+            background-color: var(--primary-color);
         }
 
-        .text-center {
-            text-align: center;
+        .bg-light {
+            background-color: var(--light-color);
         }
 
-        .text-right {
-            text-align: right;
+        .bg-dark {
+            background-color: var(--dark-color);
         }
 
-        .text-left {
-            text-align: left;
-        }
+        .mt-1 { margin-top: 0.25rem; }
+        .mt-2 { margin-top: 0.5rem; }
+        .mt-3 { margin-top: 1rem; }
+        .mt-4 { margin-top: 1.5rem; }
+        .mt-5 { margin-top: 3rem; }
 
-        .mb-0 {
-            margin-bottom: 0;
-        }
+        .mb-1 { margin-bottom: 0.25rem; }
+        .mb-2 { margin-bottom: 0.5rem; }
+        .mb-3 { margin-bottom: 1rem; }
+        .mb-4 { margin-bottom: 1.5rem; }
+        .mb-5 { margin-bottom: 3rem; }
 
-        .mb-1 {
-            margin-bottom: 0.5rem;
-        }
-
-        .mb-2 {
-            margin-bottom: 1rem;
-        }
-
-        .mb-3 {
-            margin-bottom: 1.5rem;
-        }
-
-        .mb-4 {
-            margin-bottom: 2rem;
-        }
-
-        .mb-5 {
-            margin-bottom: 3rem;
-        }
-
-        .mt-0 {
-            margin-top: 0;
-        }
-
-        .mt-1 {
-            margin-top: 0.5rem;
-        }
-
-        .mt-2 {
-            margin-top: 1rem;
-        }
-
-        .mt-3 {
-            margin-top: 1.5rem;
-        }
-
-        .mt-4 {
-            margin-top: 2rem;
-        }
-
-        .mt-5 {
-            margin-top: 3rem;
-        }
-
-        .py-1 {
-            padding-top: 0.5rem;
-            padding-bottom: 0.5rem;
-        }
-
-        .py-2 {
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-        }
-
-        .py-3 {
-            padding-top: 1.5rem;
-            padding-bottom: 1.5rem;
-        }
-
-        .py-4 {
-            padding-top: 2rem;
-            padding-bottom: 2rem;
-        }
-
-        .py-5 {
-            padding-top: 3rem;
-            padding-bottom: 3rem;
-        }
-
-        .d-none {
-            display: none !important;
-        }
+        .p-1 { padding: 0.25rem; }
+        .p-2 { padding: 0.5rem; }
+        .p-3 { padding: 1rem; }
+        .p-4 { padding: 1.5rem; }
+        .p-5 { padding: 3rem; }
 
         .d-flex {
             display: flex;
@@ -312,10 +181,6 @@
 
         .flex-column {
             flex-direction: column;
-        }
-
-        .flex-row {
-            flex-direction: row;
         }
 
         .justify-content-center {
@@ -326,655 +191,679 @@
             justify-content: space-between;
         }
 
-        .justify-content-around {
-            justify-content: space-around;
-        }
-
         .align-items-center {
             align-items: center;
-        }
-
-        .align-items-start {
-            align-items: flex-start;
-        }
-
-        .align-items-end {
-            align-items: flex-end;
-        }
-
-        .flex-wrap {
-            flex-wrap: wrap;
-        }
-
-        .flex-grow-1 {
-            flex-grow: 1;
         }
 
         .w-100 {
             width: 100%;
         }
 
-        .position-relative {
+        .rounded {
+            border-radius: var(--border-radius);
+        }
+
+        .shadow {
+            box-shadow: var(--box-shadow);
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            font-weight: 500;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            user-select: none;
+            border: 1px solid transparent;
+            padding: 0.6rem 1.2rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .btn:focus {
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(67, 97, 238, 0.25);
+        }
+
+        .btn-primary {
+            color: #fff;
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+
+        .btn-outline-primary {
+            color: var(--primary-color);
+            background-color: transparent;
+            border-color: var(--primary-color);
+        }
+
+        .btn-outline-primary:hover {
+            color: #fff;
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-success {
+            color: #fff;
+            background-color: var(--success-color);
+            border-color: var(--success-color);
+        }
+
+        .btn-success:hover {
+            background-color: #3d9a36;
+            border-color: #3d9a36;
+        }
+
+        .btn-warning {
+            color: #fff;
+            background-color: var(--warning-color);
+            border-color: var(--warning-color);
+        }
+
+        .btn-warning:hover {
+            background-color: #eea236;
+            border-color: #eea236;
+        }
+
+        .btn-danger {
+            color: #fff;
+            background-color: var(--danger-color);
+            border-color: var(--danger-color);
+        }
+
+        .btn-danger:hover {
+            background-color: #c9302c;
+            border-color: #c9302c;
+        }
+
+        .btn-sm {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.875rem;
+            border-radius: 0.2rem;
+        }
+
+        .btn-lg {
+            padding: 0.8rem 1.6rem;
+            font-size: 1.25rem;
+            border-radius: 0.3rem;
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+
+        /* Card Styles */
+        .card {
             position: relative;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            word-wrap: break-word;
+            background-color: #fff;
+            background-clip: border-box;
+            border: 1px solid rgba(0, 0, 0, 0.125);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            margin-bottom: 1.5rem;
         }
 
-        .position-absolute {
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-body {
+            flex: 1 1 auto;
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .card-text {
+            margin-bottom: 1rem;
+        }
+
+        .card-img-top {
+            width: 100%;
+            border-top-left-radius: calc(var(--border-radius) - 1px);
+            border-top-right-radius: calc(var(--border-radius) - 1px);
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control {
+            display: block;
+            width: 100%;
+            padding: 0.6rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: var(--border-radius);
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+        .form-control:focus {
+            color: #495057;
+            background-color: #fff;
+            border-color: #a1b0f5;
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(67, 97, 238, 0.25);
+        }
+
+        .form-label {
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .invalid-feedback {
+            display: none;
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 80%;
+            color: var(--danger-color);
+        }
+
+        .is-invalid {
+            border-color: var(--danger-color);
+        }
+
+        .is-invalid ~ .invalid-feedback {
+            display: block;
+        }
+
+        /* Alert Styles */
+        .alert {
+            position: relative;
+            padding: 0.75rem 1.25rem;
+            margin-bottom: 1rem;
+            border: 1px solid transparent;
+            border-radius: var(--border-radius);
+        }
+
+        .alert-primary {
+            color: #1a237e;
+            background-color: #c5cae9;
+            border-color: #b3bae5;
+        }
+
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+
+        .alert-warning {
+            color: #856404;
+            background-color: #fff3cd;
+            border-color: #ffeeba;
+        }
+
+        /* Table Styles */
+        .table {
+            width: 100%;
+            margin-bottom: 1rem;
+            color: #212529;
+            border-collapse: collapse;
+        }
+
+        .table th,
+        .table td {
+            padding: 0.75rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .table thead th {
+            vertical-align: bottom;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .table tbody + tbody {
+            border-top: 2px solid #dee2e6;
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+
+        /* Progress Bar */
+        .progress {
+            display: flex;
+            height: 1rem;
+            overflow: hidden;
+            font-size: 0.75rem;
+            background-color: #e9ecef;
+            border-radius: 0.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+            white-space: nowrap;
+            background-color: var(--primary-color);
+            transition: width 0.6s ease;
+        }
+
+        /* Avatar */
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-color);
+        }
+
+        .avatar-lg {
+            width: 120px;
+            height: 120px;
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 0.25em 0.4em;
+            font-size: 75%;
+            font-weight: 700;
+            line-height: 1;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: 0.25rem;
+            transition: var(--transition);
+        }
+
+        .badge-primary {
+            color: #fff;
+            background-color: var(--primary-color);
+        }
+
+        .badge-success {
+            color: #fff;
+            background-color: var(--success-color);
+        }
+
+        .badge-warning {
+            color: #fff;
+            background-color: var(--warning-color);
+        }
+
+        .badge-danger {
+            color: #fff;
+            background-color: var(--danger-color);
+        }
+
+        /* Tooltip */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
             position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.8rem;
         }
 
-        .position-fixed {
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
             position: fixed;
+            z-index: 1050;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            outline: 0;
+            background-color: rgba(0, 0, 0, 0.5);
         }
 
-        .position-sticky {
-            position: sticky;
+        .modal-dialog {
+            position: relative;
+            width: auto;
+            margin: 0.5rem;
+            pointer-events: none;
+            max-width: 500px;
+            margin: 1.75rem auto;
+            transition: transform 0.3s ease-out;
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .modal-content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            pointer-events: auto;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: var(--border-radius);
+            outline: 0;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
         }
 
-        @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; }
+        .modal-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding: 1rem;
+            border-bottom: 1px solid #dee2e6;
+            border-top-left-radius: calc(var(--border-radius) - 1px);
+            border-top-right-radius: calc(var(--border-radius) - 1px);
         }
 
-        @keyframes slideInDown {
+        .modal-title {
+            margin-bottom: 0;
+            line-height: 1.5;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .modal-body {
+            position: relative;
+            flex: 1 1 auto;
+            padding: 1rem;
+        }
+
+        .modal-footer {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 1rem;
+            border-top: 1px solid #dee2e6;
+            border-bottom-right-radius: calc(var(--border-radius) - 1px);
+            border-bottom-left-radius: calc(var(--border-radius) - 1px);
+        }
+
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1040;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+        }
+
+        .modal-backdrop.fade {
+            opacity: 0;
+        }
+
+        .modal-backdrop.show {
+            opacity: 0.5;
+        }
+
+        .modal-open {
+            overflow: hidden;
+        }
+
+        /* Animation Classes */
+        .fade {
+            transition: opacity 0.15s linear;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .fade {
+                transition: none;
+            }
+        }
+
+        .fade:not(.show) {
+            opacity: 0;
+        }
+
+        .slide-in {
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
             from {
-                transform: translateY(-100%);
+                transform: translateY(50px);
                 opacity: 0;
             }
             to {
                 transform: translateY(0);
                 opacity: 1;
             }
-        }
-
-        @keyframes slideOutUp {
-            from {
-                transform: translateY(0);
-                opacity: 1;
-            }
-            to {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-        }
-
-        @keyframes slideInUp {
-            from {
-                transform: translateY(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideOutDown {
-            from {
-                transform: translateY(0);
-                opacity: 1;
-            }
-            to {
-                transform: translateY(100%);
-                opacity: 0;
-            }
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(67, 97, 238, 0.7);
-            }
-            70% {
-                transform: scale(1.05);
-                box-shadow: 0 0 0 10px rgba(67, 97, 238, 0);
-            }
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(67, 97, 238, 0);
-            }
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes confetti {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(720deg);
-                opacity: 0;
-            }
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-            100% {
-                transform: translateY(0px);
-            }
-        }
-
-        @keyframes gradientShift {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.5s ease forwards;
-        }
-
-        .fade-out {
-            animation: fadeOut 0.5s ease forwards;
-        }
-
-        .slide-in-down {
-            animation: slideInDown 0.5s ease forwards;
-        }
-
-        .slide-out-up {
-            animation: slideOutUp 0.5s ease forwards;
-        }
-
-        .slide-in-up {
-            animation: slideInUp 0.5s ease forwards;
-        }
-
-        .slide-out-down {
-            animation: slideOutDown 0.5s ease forwards;
         }
 
         .pulse {
             animation: pulse 1.5s infinite;
         }
 
-        .float {
-            animation: float 3s ease-in-out infinite;
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(67, 97, 238, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(67, 97, 238, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(67, 97, 238, 0);
+            }
         }
 
-        /* Loader Styles */
-        .loader-container {
+        .glow {
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 5px rgba(67, 97, 238, 0.5);
+            }
+            to {
+                box-shadow: 0 0 20px rgba(67, 97, 238, 0.8);
+            }
+        }
+
+        /* Loading Screen */
+        .loading-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: var(--primary-color);
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             z-index: 9999;
             transition: opacity 0.5s ease;
         }
 
-        [data-theme="dark"] .loader-container {
-            background-color: rgba(0, 0, 0, 0.9);
+        .loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
         }
 
-        .loader {
+        .spinner {
             width: 50px;
             height: 50px;
-            border: 5px solid var(--primary-color);
+            border: 5px solid rgba(255, 255, 255, 0.3);
             border-radius: 50%;
-            border-top-color: transparent;
-            animation: spin 1s linear infinite;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-bottom: 1rem;
         }
 
-        /* Header Styles */
-        header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            transition: var(--transition);
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
         }
 
-        [data-theme="dark"] header {
-            background-color: var(--dark-color);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .header-container {
+        /* Navbar */
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1rem 1.5rem;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            display: flex;
-            align-items: center;
-        }
-
-        .logo i {
-            margin-right: 0.5rem;
-            font-size: 1.75rem;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-links a {
-            margin-left: 1.5rem;
-            font-weight: 500;
-            color: var(--dark-color);
-            transition: var(--transition);
-        }
-
-        [data-theme="dark"] .nav-links a {
-            color: var(--light-color);
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .theme-toggle {
-            background: none;
-            border: none;
-            font-size: 1.25rem;
-            color: var(--dark-color);
-            cursor: pointer;
-            transition: var(--transition);
-            margin-left: 1.5rem;
-        }
-
-        [data-theme="dark"] .theme-toggle {
-            color: var(--light-color);
-        }
-
-        .theme-toggle:hover {
-            color: var(--primary-color);
-            transform: rotate(30deg);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--dark-color);
-            cursor: pointer;
-        }
-
-        [data-theme="dark"] .mobile-menu-btn {
-            color: var(--light-color);
-        }
-
-        /* Mobile Menu */
-        .mobile-menu {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: white;
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transform: translateX(-100%);
-            transition: transform 0.3s ease;
+            right: 0;
+            z-index: 1000;
         }
 
-        [data-theme="dark"] .mobile-menu {
-            background-color: var(--dark-color);
-        }
-
-        .mobile-menu.active {
-            transform: translateX(0);
-        }
-
-        .mobile-menu .close-btn {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
+        .navbar-brand {
             font-size: 1.5rem;
-            background: none;
-            border: none;
-            color: var(--dark-color);
-            cursor: pointer;
-        }
-
-        [data-theme="dark"] .mobile-menu .close-btn {
-            color: var(--light-color);
-        }
-
-        .mobile-menu a {
-            font-size: 1.25rem;
-            margin: 1rem 0;
-            color: var(--dark-color);
-            font-weight: 500;
-        }
-
-        [data-theme="dark"] .mobile-menu a {
-            color: var(--light-color);
-        }
-
-        /* Main Content Styles */
-        main {
-            flex: 1;
-            padding-bottom: 5rem;
-        }
-
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 5rem 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
-            background-size: cover;
-            opacity: 0.1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: white;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .hero-btns {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .hero-btns .btn {
-            margin: 0.5rem;
-        }
-
-        .section {
-            padding: 4rem 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background-color: var(--primary-color);
-            margin: 1rem auto 0;
-            border-radius: 2px;
-        }
-
-        /* Auth Pages Styles */
-        .auth-container {
-            max-width: 500px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background-color: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-        }
-
-        [data-theme="dark"] .auth-container {
-            background-color: #2c2c2c;
-        }
-
-        .auth-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        [data-theme="dark"] .auth-container:hover {
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .auth-title {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: var(--primary-color);
-        }
-
-        .auth-form .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .auth-form label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: var(--dark-color);
-        }
-
-        [data-theme="dark"] .auth-form label {
-            color: var(--light-color);
-        }
-
-        .auth-form input {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border: 1px solid #ddd;
-            border-radius: var(--border-radius);
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        [data-theme="dark"] .auth-form input {
-            background-color: #333;
-            border-color: #444;
-            color: var(--light-color);
-        }
-
-        .auth-form input:focus {
-            border-color: var(--primary-color);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
-        }
-
-        .auth-form .btn {
-            width: 100%;
-            margin-top: 1rem;
-        }
-
-        .auth-switch {
-            text-align: center;
-            margin-top: 1.5rem;
-            color: var(--gray-color);
-        }
-
-        .auth-switch a {
-            color: var(--primary-color);
-            font-weight: 500;
-        }
-
-        /* Profile Page Styles */
-        .profile-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .profile-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--primary-color);
-            margin: 0 auto 1rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
-        }
-
-        .profile-avatar:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .profile-name {
-            font-size: 1.75rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .profile-username {
-            color: var(--gray-color);
-            margin-bottom: 1.5rem;
-        }
-
-        .profile-stats {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .stat-card {
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: var(--border-radius);
-            text-align: center;
-            min-width: 150px;
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-        }
-
-        [data-theme="dark"] .stat-card {
-            background-color: #2c2c2c;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        [data-theme="dark"] .stat-card:hover {
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .stat-value {
-            font-size: 2rem;
             font-weight: 700;
             color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            color: var(--gray-color);
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .progress-container {
-            margin: 2rem 0;
-        }
-
-        .progress-title {
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
+            align-items: center;
         }
 
-        .progress-bar {
-            height: 10px;
-            background-color: #e9ecef;
-            border-radius: 5px;
-            overflow: hidden;
+        .navbar-brand i {
+            margin-right: 0.5rem;
         }
 
-        [data-theme="dark"] .progress-bar {
-            background-color: #333;
+        .navbar-actions {
+            display: flex;
+            align-items: center;
         }
 
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-            border-radius: 5px;
-            transition: width 0.5s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .progress-fill::after {
-            content: '';
-            position: absolute;
-            top: 0;
+        /* Bottom Navbar */
+        .bottom-navbar {
+            display: none;
+            position: fixed;
+            bottom: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
-            animation: gradientShift 2s linear infinite;
-            background-size: 200% 100%;
+            background-color: #fff;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 0.5rem 0;
         }
 
-        .withdraw-container {
+        .nav-items {
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-item {
+            flex: 1;
             text-align: center;
-            margin: 2rem 0;
         }
 
-        .withdraw-btn {
+        .nav-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--gray-color);
+            padding: 0.5rem;
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+
+        .nav-link i {
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .nav-link.active {
+            color: var(--primary-color);
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        /* Ad Banner */
+        .ad-banner {
+            background: linear-gradient(135deg, #4361ee, #3a0ca3);
+            color: white;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: slideIn 0.5s ease-out;
             position: relative;
             overflow: hidden;
         }
 
-        .withdraw-btn::after {
-            content: '';
+        .ad-banner::before {
+            content: "";
             position: absolute;
             top: -50%;
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(transparent, rgba(255, 255, 255, 0.3), transparent);
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0) 45%,
+                rgba(255, 255, 255, 0.2) 50%,
+                rgba(255, 255, 255, 0) 55%,
+                rgba(255, 255, 255, 0) 100%
+            );
             transform: rotate(30deg);
             animation: shine 3s infinite;
         }
@@ -988,2024 +877,1446 @@
             }
         }
 
-        .history-title {
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid #eee;
+        .ad-banner-content {
+            flex: 1;
+            padding-right: 1rem;
         }
 
-        [data-theme="dark"] .history-title {
-            border-bottom-color: #444;
+        .ad-banner-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
         }
 
-        .history-table {
-            width: 100%;
-            border-collapse: collapse;
+        .ad-banner-text {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .ad-banner-btn {
+            white-space: nowrap;
             background-color: white;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--box-shadow);
+            color: var(--primary-color);
+            font-weight: 600;
         }
 
-        [data-theme="dark"] .history-table {
-            background-color: #2c2c2c;
+        .ad-banner-btn:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--primary-dark);
         }
 
-        .history-table th, .history-table td {
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 1px solid #eee;
-        }
-
-        [data-theme="dark"] .history-table th, 
-        [data-theme="dark"] .history-table td {
-            border-bottom-color: #444;
-        }
-
-        .history-table th {
-            background-color: var(--primary-color);
-            color: white;
-            font-weight: 500;
-        }
-
-        .history-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .history-table tr:hover {
-            background-color: rgba(67, 97, 238, 0.05);
-        }
-
-        [data-theme="dark"] .history-table tr:hover {
-            background-color: rgba(67, 97, 238, 0.1);
-        }
-
-        .status-badge {
-            display: inline-block;
-            padding: 0.25rem 0.5rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            text-transform: uppercase;
-        }
-
-        .status-success {
-            background-color: rgba(75, 181, 67, 0.1);
-            color: var(--success-color);
-        }
-
-        .status-pending {
-            background-color: rgba(240, 173, 78, 0.1);
-            color: var(--warning-color);
-        }
-
-        /* Jobs Page Styles */
-        .jobs-filter {
+        /* Share Modal */
+        .share-options {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
+            justify-content: center;
             gap: 1rem;
+            margin-top: 1rem;
         }
 
-        .search-box {
-            position: relative;
-            flex-grow: 1;
-            max-width: 400px;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 0.75rem 1rem 0.75rem 2.5rem;
-            border: 1px solid #ddd;
+        .share-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
             border-radius: var(--border-radius);
-            font-size: 1rem;
+            background-color: #f8f9fa;
+            color: var(--dark-color);
             transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            width: 80px;
         }
 
-        [data-theme="dark"] .search-box input {
-            background-color: #333;
-            border-color: #444;
-            color: var(--light-color);
+        .share-btn i {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
         }
 
-        .search-box input:focus {
-            border-color: var(--primary-color);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        .share-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .search-box i {
+        .share-btn.whatsapp {
+            color: #25D366;
+        }
+
+        .share-btn.facebook {
+            color: #1877F2;
+        }
+
+        .share-btn.link {
+            color: var(--primary-color);
+        }
+
+        /* Confetti */
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1001;
+            overflow: hidden;
+        }
+
+        .confetti {
             position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
+            width: 10px;
+            height: 10px;
+            background-color: var(--primary-color);
+            opacity: 0;
+            animation: confetti-fall 5s linear forwards;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.8rem 1rem;
+            }
+            
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+            
+            .bottom-navbar {
+                display: block;
+            }
+            
+            .card-body {
+                padding: 1rem;
+            }
+            
+            .ad-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .ad-banner-content {
+                padding-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .modal-dialog {
+                margin: 0.5rem;
+                max-width: calc(100% - 1rem);
+            }
+            
+            .share-options {
+                flex-wrap: wrap;
+            }
+            
+            .share-btn {
+                width: calc(50% - 0.5rem);
+            }
+        }
+
+        /* Custom Page Styles */
+        .auth-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            background-color: #f5f7ff;
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 450px;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .auth-logo {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .auth-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .auth-subtitle {
+            color: var(--gray-color);
+            font-size: 0.9rem;
+        }
+
+        .auth-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
             color: var(--gray-color);
         }
 
-        .filter-btns {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
+        .auth-switch {
+            color: var(--primary-color);
+            font-weight: 500;
+            cursor: pointer;
         }
 
-        .job-grid {
+        .page-container {
+            padding-top: 70px;
+            padding-bottom: 70px;
+            min-height: calc(100vh - 140px);
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background-color: #fff;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray-color);
+        }
+
+        .withdraw-btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .withdraw-btn.disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .jobs-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 1.5rem;
         }
 
-        .job-card {
-            background-color: white;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-            position: relative;
+        .job-card .card-img-top {
+            height: 180px;
+            object-fit: cover;
         }
 
-        [data-theme="dark"] .job-card {
-            background-color: #2c2c2c;
-        }
-
-        .job-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        [data-theme="dark"] .job-card:hover {
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .job-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1), rgba(67, 97, 238, 0));
-            opacity: 0;
-            transition: var(--transition);
-            pointer-events: none;
-        }
-
-        .job-card:hover::before {
-            opacity: 1;
-        }
-
-        .job-card-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid #eee;
-            position: relative;
-        }
-
-        [data-theme="dark"] .job-card-header {
-            border-bottom-color: #444;
-        }
-
-        .job-card-title {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-            color: var(--dark-color);
-        }
-
-        [data-theme="dark"] .job-card-title {
-            color: var(--light-color);
-        }
-
-        .job-card-company {
-            color: var(--gray-color);
-            font-size: 0.875rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .job-card-meta {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .job-meta-item {
-            display: flex;
-            align-items: center;
-            color: var(--gray-color);
-            font-size: 0.875rem;
-        }
-
-        .job-meta-item i {
-            margin-right: 0.5rem;
-            color: var(--primary-color);
-        }
-
-        .job-card-body {
-            padding: 1.5rem;
-        }
-
-        .job-card-description {
-            margin-bottom: 1.5rem;
-            color: var(--dark-color);
-            line-height: 1.6;
-        }
-
-        [data-theme="dark"] .job-card-description {
-            color: var(--light-color);
-        }
-
-        .job-card-footer {
-            padding: 0 1.5rem 1.5rem;
+        .job-meta {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
         }
 
-        .job-card-reward {
-            background-color: rgba(75, 181, 67, 0.1);
+        .job-reward {
             color: var(--success-color);
-            padding: 0.5rem 1rem;
-            border-radius: var(--border-radius);
-            font-weight: 500;
+            font-weight: 600;
+        }
+
+        .job-points {
+            color: var(--warning-color);
+            font-weight: 600;
+        }
+
+        .share-btn-job {
             display: flex;
             align-items: center;
-        }
-
-        .job-card-reward i {
-            margin-right: 0.5rem;
-        }
-
-        .job-card-actions {
-            display: flex;
+            justify-content: center;
             gap: 0.5rem;
         }
 
-        /* Share Modal Styles */
-        .modal-overlay {
-            position: fixed;
+        /* Theme Toggle */
+        .theme-toggle {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+            margin-left: 1rem;
+        }
+
+        .theme-toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
         }
 
-        .modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal {
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
             background-color: white;
-            border-radius: var(--border-radius);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            width: 90%;
-            max-width: 500px;
-            transform: translateY(-50px);
-            transition: var(--transition);
-            position: relative;
-        }
-
-        [data-theme="dark"] .modal {
-            background-color: #2c2c2c;
-        }
-
-        .modal-overlay.active .modal {
-            transform: translateY(0);
-        }
-
-        .modal-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        [data-theme="dark"] .modal-header {
-            border-bottom-color: #444;
-        }
-
-        .modal-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--dark-color);
-            margin: 0;
-        }
-
-        [data-theme="dark"] .modal-title {
-            color: var(--light-color);
-        }
-
-        .modal-close {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--gray-color);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .modal-close:hover {
-            color: var(--danger-color);
-            transform: rotate(90deg);
-        }
-
-        .modal-body {
-            padding: 1.5rem;
-        }
-
-        .share-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .share-option {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 1rem;
-            border-radius: var(--border-radius);
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .share-option:hover {
-            background-color: rgba(67, 97, 238, 0.1);
-            transform: translateY(-3px);
-        }
-
-        [data-theme="dark"] .share-option:hover {
-            background-color: rgba(67, 97, 238, 0.2);
-        }
-
-        .share-icon {
-            width: 50px;
-            height: 50px;
+            transition: .4s;
             border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.5rem;
-            color: white;
+        }
+
+        input:checked + .slider {
+            background-color: var(--primary-color);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .slider i {
+            position: absolute;
+            font-size: 12px;
+            top: 6px;
+        }
+
+        .slider .fa-sun {
+            left: 6px;
+            color: #f39c12;
+        }
+
+        .slider .fa-moon {
+            right: 6px;
+            color: #f1c40f;
+        }
+
+        input:checked + .slider .fa-sun {
+            opacity: 0;
+        }
+
+        input:not(:checked) + .slider .fa-moon {
+            opacity: 0;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            color: var(--gray-color);
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .empty-state h4 {
             margin-bottom: 0.5rem;
         }
 
-        .share-icon.whatsapp {
-            background-color: #25D366;
-        }
-
-        .share-icon.facebook {
-            background-color: #1877F2;
-        }
-
-        .share-icon.twitter {
-            background-color: #1DA1F2;
-        }
-
-        .share-icon.link {
-            background-color: var(--primary-color);
-        }
-
-        .share-label {
-            font-size: 0.875rem;
-            color: var(--dark-color);
-            text-align: center;
-        }
-
-        [data-theme="dark"] .share-label {
-            color: var(--light-color);
-        }
-
-        .link-copy {
-            display: flex;
-            margin-top: 1.5rem;
-        }
-
-        .link-copy input {
-            flex-grow: 1;
-            padding: 0.75rem 1rem;
-            border: 1px solid #ddd;
-            border-radius: var(--border-radius) 0 0 var(--border-radius);
-            font-size: 0.875rem;
-            transition: var(--transition);
-        }
-
-        [data-theme="dark"] .link-copy input {
-            background-color: #333;
-            border-color: #444;
-            color: var(--light-color);
-        }
-
-        .link-copy input:focus {
-            outline: none;
-            border-color: var(--primary-color);
-        }
-
-        .link-copy-btn {
-            padding: 0 1rem;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 0 var(--border-radius) var(--border-radius) 0;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .link-copy-btn:hover {
-            background-color: var(--primary-dark);
-        }
-
-        .modal-footer {
-            padding: 1rem 1.5rem;
-            border-top: 1px solid #eee;
-            text-align: right;
-        }
-
-        [data-theme="dark"] .modal-footer {
-            border-top-color: #444;
-        }
-
-        /* Notification Styles */
-        .notification {
-            position: fixed;
-            top: 1rem;
-            right: 1rem;
-            background-color: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            padding: 1rem 1.5rem;
-            display: flex;
-            align-items: center;
-            z-index: 9998;
-            transform: translateX(150%);
-            transition: transform 0.3s ease;
-            max-width: 350px;
-        }
-
-        [data-theme="dark"] .notification {
-            background-color: #2c2c2c;
-        }
-
-        .notification.active {
-            transform: translateX(0);
-        }
-
-        .notification-icon {
-            font-size: 1.5rem;
-            margin-right: 1rem;
-        }
-
-        .notification-success .notification-icon {
-            color: var(--success-color);
-        }
-
-        .notification-error .notification-icon {
-            color: var(--danger-color);
-        }
-
-        .notification-warning .notification-icon {
-            color: var(--warning-color);
-        }
-
-        .notification-info .notification-icon {
-            color: var(--info-color);
-        }
-
-        .notification-content {
-            flex-grow: 1;
-        }
-
-        .notification-title {
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        .notification-message {
-            font-size: 0.875rem;
+        .empty-state p {
             color: var(--gray-color);
-        }
-
-        .notification-close {
-            margin-left: 1rem;
-            background: none;
-            border: none;
-            color: var(--gray-color);
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        /* Bottom Navigation */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: white;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-            z-index: 100;
-            display: none;
-        }
-
-        [data-theme="dark"] .bottom-nav {
-            background-color: var(--dark-color);
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .bottom-nav-list {
-            display: flex;
-            justify-content: space-around;
-            padding: 0.75rem 0;
-        }
-
-        .bottom-nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: var(--gray-color);
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .bottom-nav-item.active {
-            color: var(--primary-color);
-        }
-
-        .bottom-nav-icon {
-            font-size: 1.5rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .bottom-nav-label {
-            font-size: 0.75rem;
-        }
-
-        .bottom-nav-badge {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background-color: var(--danger-color);
-            color: white;
-            border-radius: 50%;
-            width: 18px;
-            height: 18px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 0.625rem;
-            font-weight: 600;
-        }
-
-        /* Confetti Effect */
-        .confetti {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            background-color: var(--primary-color);
-            opacity: 0;
-            z-index: 9999;
-            animation: confetti 3s ease-out forwards;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .bottom-nav {
-                display: block;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .section {
-                padding: 3rem 0;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .profile-stats {
-                gap: 1rem;
-            }
-
-            .stat-card {
-                min-width: 120px;
-                padding: 1rem;
-            }
-
-            .stat-value {
-                font-size: 1.5rem;
-            }
-
-            .job-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            }
-
-            .hero {
-                padding: 4rem 0;
-            }
-
-            .hero h1 {
-                font-size: 1.75rem;
-            }
-
-            .section {
-                padding: 2.5rem 0;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .container {
-                padding: 0 1rem;
-            }
-
-            .auth-container {
-                padding: 1.5rem;
-            }
-
-            .hero-btns {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .hero-btns .btn {
-                width: 100%;
-                max-width: 250px;
-            }
-
-            .profile-stats {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .stat-card {
-                width: 100%;
-            }
-
-            .share-options {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .history-table {
-                display: block;
-                overflow-x: auto;
-            }
+            max-width: 400px;
+            margin: 0 auto 1.5rem;
         }
     </style>
 </head>
 <body>
-    <!-- Loader -->
-    <div class="loader-container" id="loader">
-        <div class="loader"></div>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="spinner"></div>
+        <h3 style="color: white;">Loading AffiJobs</h3>
     </div>
 
-    <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <a href="#" class="logo" id="home-link">
-                <i class="fas fa-hand-holding-usd"></i>
-                <span>AffiJobs</span>
+    <!-- Confetti Container -->
+    <div id="confetti-container" class="confetti-container"></div>
+
+    <!-- Main App Structure -->
+    <div id="app">
+        <!-- Top Navigation -->
+        <nav class="navbar">
+            <a href="#" class="navbar-brand" onclick="navigateTo('home')">
+                <i class="fas fa-hand-holding-usd"></i> AffiJobs
             </a>
-            <nav class="nav-links">
-                <a href="#" class="nav-link" data-page="home">Home</a>
-                <a href="#" class="nav-link" data-page="jobs">Jobs</a>
-                <a href="#" class="nav-link" data-page="profile">Profile</a>
-                <a href="#" class="nav-link" id="logout-btn">Logout</a>
-                <button class="theme-toggle" id="theme-toggle">
-                    <i class="fas fa-moon"></i>
+            <div class="navbar-actions">
+                <label class="theme-toggle tooltip" title="Toggle dark mode">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
+                    </span>
+                </label>
+                <button id="logout-btn" class="btn btn-outline-primary btn-sm ml-2" style="display: none;">
+                    <i class="fas fa-sign-out-alt"></i> Logout
                 </button>
-            </nav>
-            <button class="mobile-menu-btn" id="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </header>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobile-menu">
-        <button class="close-btn" id="close-mobile-menu">
-            <i class="fas fa-times"></i>
-        </button>
-        <a href="#" class="mobile-nav-link" data-page="home">Home</a>
-        <a href="#" class="mobile-nav-link" data-page="jobs">Jobs</a>
-        <a href="#" class="mobile-nav-link" data-page="profile">Profile</a>
-        <a href="#" class="mobile-nav-link" id="mobile-logout-btn">Logout</a>
-        <button class="theme-toggle mobile-theme-toggle" id="mobile-theme-toggle">
-            <i class="fas fa-moon"></i> Toggle Theme
-        </button>
-    </div>
-
-    <!-- Main Content -->
-    <main>
-        <!-- Home Page -->
-        <section class="page" id="home-page">
-            <div class="hero">
-                <div class="hero-content">
-                    <h1>Earn Money By Sharing Jobs</h1>
-                    <p>Join thousands of people earning extra income by sharing affiliate marketing jobs. Get paid for every successful share!</p>
-                    <div class="hero-btns">
-                        <a href="#" class="btn btn-lg" data-page="jobs">Browse Jobs</a>
-                        <a href="#" class="btn btn-lg btn-outline" data-page="profile">My Earnings</a>
-                    </div>
-                </div>
             </div>
+        </nav>
 
-            <div class="section">
-                <div class="container">
-                    <div class="section-title">
-                        <h2>How It Works</h2>
-                        <p>Start earning in just 3 simple steps</p>
-                    </div>
-                    <div class="d-flex justify-content-around flex-wrap">
-                        <div class="text-center mb-4" style="max-width: 300px;">
-                            <div class="mb-3">
-                                <div class="d-flex justify-content-center align-items-center" style="width: 80px; height: 80px; background-color: rgba(67, 97, 238, 0.1); border-radius: 50%; margin: 0 auto;">
-                                    <i class="fas fa-search" style="font-size: 2rem; color: var(--primary-color);"></i>
+        <!-- Bottom Navigation (Mobile) -->
+        <nav class="bottom-navbar">
+            <ul class="nav-items">
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="navigateTo('home')">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="navigateTo('jobs')">
+                        <i class="fas fa-briefcase"></i>
+                        <span>Jobs</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="navigateTo('profile')">
+                        <i class="fas fa-user"></i>
+                        <span>Profile</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Sections -->
+        <div class="container">
+            <!-- Home Page -->
+            <div id="home-page" class="page-container" style="display: none;">
+                <div class="text-center mb-5">
+                    <h2>Welcome to AffiJobs</h2>
+                    <p class="text-muted">Earn money by sharing affiliate jobs with your network</p>
+                </div>
+
+                <div class="card shadow slide-in">
+                    <div class="card-body">
+                        <h4 class="card-title">How It Works</h4>
+                        <div class="row mt-4">
+                            <div class="col-md-4 mb-4">
+                                <div class="text-center">
+                                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                        <i class="fas fa-search fa-lg"></i>
+                                    </div>
+                                    <h5 class="mt-3">Find Jobs</h5>
+                                    <p>Browse our list of affiliate marketing jobs from top companies.</p>
                                 </div>
                             </div>
-                            <h3>1. Find Jobs</h3>
-                            <p>Browse our curated list of high-paying affiliate marketing jobs from trusted partners.</p>
-                        </div>
-                        <div class="text-center mb-4" style="max-width: 300px;">
-                            <div class="mb-3">
-                                <div class="d-flex justify-content-center align-items-center" style="width: 80px; height: 80px; background-color: rgba(67, 97, 238, 0.1); border-radius: 50%; margin: 0 auto;">
-                                    <i class="fas fa-share-alt" style="font-size: 2rem; color: var(--primary-color);"></i>
+                            <div class="col-md-4 mb-4">
+                                <div class="text-center">
+                                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                        <i class="fas fa-share-alt fa-lg"></i>
+                                    </div>
+                                    <h5 class="mt-3">Share</h5>
+                                    <p>Share the job links with your friends and social networks.</p>
                                 </div>
                             </div>
-                            <h3>2. Share Links</h3>
-                            <p>Share job links with your network via WhatsApp, Facebook, or other platforms.</p>
-                        </div>
-                        <div class="text-center mb-4" style="max-width: 300px;">
-                            <div class="mb-3">
-                                <div class="d-flex justify-content-center align-items-center" style="width: 80px; height: 80px; background-color: rgba(67, 97, 238, 0.1); border-radius: 50%; margin: 0 auto;">
-                                    <i class="fas fa-wallet" style="font-size: 2rem; color: var(--primary-color);"></i>
+                            <div class="col-md-4 mb-4">
+                                <div class="text-center">
+                                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                        <i class="fas fa-money-bill-wave fa-lg"></i>
+                                    </div>
+                                    <h5 class="mt-3">Earn</h5>
+                                    <p>Get paid for every successful referral from your shared links.</p>
                                 </div>
                             </div>
-                            <h3>3. Earn Money</h3>
-                            <p>Get paid Ksh. 100 for every share. Withdraw your earnings when you reach Ksh. 5000.</p>
+                        </div>
+                        <div class="text-center mt-4">
+                            <button class="btn btn-primary" onclick="navigateTo('jobs')">
+                                <i class="fas fa-briefcase mr-2"></i> Browse Jobs
+                            </button>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="section" style="background-color: rgba(67, 97, 238, 0.05);">
-                <div class="container">
-                    <div class="section-title">
-                        <h2>Why Choose AffiJobs?</h2>
-                        <p>We make earning extra income simple and rewarding</p>
-                    </div>
-                    <div class="d-flex justify-content-around flex-wrap">
-                        <div class="text-center mb-4" style="max-width: 300px;">
-                            <div class="mb-3">
-                                <i class="fas fa-bolt" style="font-size: 2.5rem; color: var(--primary-color);"></i>
-                            </div>
-                            <h3>Instant Payouts</h3>
-                            <p>Get paid immediately when you reach the withdrawal threshold.</p>
-                        </div>
-                        <div class="text-center mb-4" style="max-width: 300px;">
-                            <div class="mb-3">
-                                <i class="fas fa-chart-line" style="font-size: 2.5rem; color: var(--primary-color);"></i>
-                            </div>
-                            <h3>High Earnings</h3>
-                            <p>Earn more than other platforms with our competitive rates.</p>
-                        </div>
-                        <div class="text-center mb-4" style="max-width: 300px;">
-                            <div class="mb-3">
-                                <i class="fas fa-headset" style="font-size: 2.5rem; color: var(--primary-color);"></i>
-                            </div>
-                            <h3>24/7 Support</h3>
-                            <p>Our team is always available to help you with any questions.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Jobs Page -->
-        <section class="page d-none" id="jobs-page">
-            <div class="section">
-                <div class="container">
-                    <div class="section-title">
-                        <h2>Available Jobs</h2>
-                        <p>Share these jobs and earn Ksh. 100 per successful share</p>
-                    </div>
-
-                    <div class="jobs-filter">
-                        <div class="search-box">
-                            <i class="fas fa-search"></i>
-                            <input type="text" id="job-search" placeholder="Search jobs...">
-                        </div>
-                        <div class="filter-btns">
-                            <button class="btn btn-sm btn-outline active" data-filter="all">All</button>
-                            <button class="btn btn-sm btn-outline" data-filter="travel">Travel</button>
-                            <button class="btn btn-sm btn-outline" data-filter="shopping">Shopping</button>
-                            <button class="btn btn-sm btn-outline" data-filter="hotels">Hotels</button>
-                        </div>
-                    </div>
-
-                    <div class="job-grid" id="job-listings">
-                        <!-- Job cards will be dynamically inserted here -->
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Profile Page -->
-        <section class="page d-none" id="profile-page">
-            <div class="section">
-                <div class="container">
-                    <div class="profile-header">
-                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=4361ee&color=fff&size=120" alt="Profile Avatar" class="profile-avatar" id="profile-avatar">
-                        <h1 class="profile-name" id="profile-name">John Doe</h1>
-                        <p class="profile-username" id="profile-email">john@example.com</p>
-                    </div>
-
-                    <div class="profile-stats">
-                        <div class="stat-card">
-                            <div class="stat-value" id="links-shared">0</div>
-                            <div class="stat-label">Links Shared</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-value" id="total-points">0</div>
-                            <div class="stat-label">Total Points</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-value" id="balance">Ksh. 0</div>
-                            <div class="stat-label">Balance</div>
-                        </div>
-                    </div>
-
-                    <div class="progress-container">
-                        <div class="progress-title">
-                            <span>Withdrawal Progress</span>
-                            <span id="progress-text">0/5000 points</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
-                        </div>
-                    </div>
-
-                    <div class="withdraw-container">
-                        <button class="btn btn-lg withdraw-btn" id="withdraw-btn">Withdraw Earnings</button>
-                    </div>
-
-                    <div class="history-container">
-                        <h3 class="history-title">Transaction History</h3>
+                <div class="card shadow mt-4 slide-in" style="animation-delay: 0.2s;">
+                    <div class="card-body">
+                        <h4 class="card-title">Top Earners</h4>
                         <div class="table-responsive">
-                            <table class="history-table">
+                            <table class="table table-striped mt-3">
                                 <thead>
                                     <tr>
-                                        <th>Job Title</th>
-                                        <th>Date</th>
-                                        <th>Points</th>
-                                        <th>Status</th>
+                                        <th>Rank</th>
+                                        <th>Name</th>
+                                        <th>Earnings</th>
+                                        <th>Shares</th>
                                     </tr>
                                 </thead>
-                                <tbody id="transaction-history">
-                                    <!-- Transaction history will be dynamically inserted here -->
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Jane Doe</td>
+                                        <td>Ksh. 12,450</td>
+                                        <td>124</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>John Smith</td>
+                                        <td>Ksh. 9,800</td>
+                                        <td>98</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Mary Johnson</td>
+                                        <td>Ksh. 8,200</td>
+                                        <td>82</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>David Kimani</td>
+                                        <td>Ksh. 7,500</td>
+                                        <td>75</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Sarah Wangari</td>
+                                        <td>Ksh. 6,300</td>
+                                        <td>63</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Login Page -->
-        <section class="page" id="login-page">
-            <div class="section">
-                <div class="container">
-                    <div class="auth-container">
-                        <h2 class="auth-title">Welcome Back!</h2>
-                        <form class="auth-form" id="login-form">
-                            <div class="form-group">
-                                <label for="login-email">Email Address</label>
-                                <input type="email" id="login-email" placeholder="Enter your email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="login-password">Password</label>
-                                <input type="password" id="login-password" placeholder="Enter your password" required>
-                            </div>
-                            <button type="submit" class="btn">Login</button>
-                        </form>
-                        <div class="auth-switch">
-                            Don't have an account? <a href="#" id="show-register">Register</a>
-                        </div>
+            <!-- Jobs Page -->
+            <div id="jobs-page" class="page-container" style="display: none;">
+                <h2 class="mb-4">Available Jobs</h2>
+                
+                <!-- Ad Banner -->
+                <div class="ad-banner">
+                    <div class="ad-banner-content">
+                        <h4 class="ad-banner-title">Invite your friends & earn 1000 bonus points instantly!</h4>
+                        <p class="ad-banner-text">Get your unique referral link and start earning more today.</p>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Register Page -->
-        <section class="page d-none" id="register-page">
-            <div class="section">
-                <div class="container">
-                    <div class="auth-container">
-                        <h2 class="auth-title">Create Account</h2>
-                        <form class="auth-form" id="register-form">
-                            <div class="form-group">
-                                <label for="register-name">Full Name</label>
-                                <input type="text" id="register-name" placeholder="Enter your full name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="register-email">Email Address</label>
-                                <input type="email" id="register-email" placeholder="Enter your email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="register-password">Password</label>
-                                <input type="password" id="register-password" placeholder="Create a password" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="register-confirm">Confirm Password</label>
-                                <input type="password" id="register-confirm" placeholder="Confirm your password" required>
-                            </div>
-                            <button type="submit" class="btn">Register</button>
-                        </form>
-                        <div class="auth-switch">
-                            Already have an account? <a href="#" id="show-login">Login</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Bottom Navigation -->
-    <nav class="bottom-nav">
-        <ul class="bottom-nav-list">
-            <li class="bottom-nav-item active" data-page="home">
-                <i class="fas fa-home bottom-nav-icon"></i>
-                <span class="bottom-nav-label">Home</span>
-            </li>
-            <li class="bottom-nav-item" data-page="jobs">
-                <i class="fas fa-briefcase bottom-nav-icon"></i>
-                <span class="bottom-nav-label">Jobs</span>
-                <span class="bottom-nav-badge d-none" id="jobs-badge">5</span>
-            </li>
-            <li class="bottom-nav-item" data-page="profile">
-                <i class="fas fa-user bottom-nav-icon"></i>
-                <span class="bottom-nav-label">Profile</span>
-            </li>
-        </ul>
-    </nav>
-
-    <!-- Share Modal -->
-    <div class="modal-overlay" id="share-modal">
-        <div class="modal">
-            <div class="modal-header">
-                <h3 class="modal-title">Share This Job</h3>
-                <button class="modal-close" id="close-share-modal">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="share-options">
-                    <div class="share-option" data-share="whatsapp">
-                        <div class="share-icon whatsapp">
-                            <i class="fab fa-whatsapp"></i>
-                        </div>
-                        <span class="share-label">WhatsApp</span>
-                    </div>
-                    <div class="share-option" data-share="facebook">
-                        <div class="share-icon facebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </div>
-                        <span class="share-label">Facebook</span>
-                    </div>
-                    <div class="share-option" data-share="twitter">
-                        <div class="share-icon twitter">
-                            <i class="fab fa-twitter"></i>
-                        </div>
-                        <span class="share-label">Twitter</span>
-                    </div>
-                    <div class="share-option" data-share="link">
-                        <div class="share-icon link">
-                            <i class="fas fa-link"></i>
-                        </div>
-                        <span class="share-label">Copy Link</span>
-                    </div>
-                </div>
-                <div class="link-copy">
-                    <input type="text" id="share-link-input" readonly>
-                    <button class="link-copy-btn" id="copy-link-btn">
-                        <i class="fas fa-copy"></i>
+                    <button class="btn ad-banner-btn" onclick="showShareModal('referral')">
+                        <i class="fas fa-share-alt mr-2"></i> Share Now
                     </button>
                 </div>
+                
+                <!-- Jobs Grid -->
+                <div class="jobs-grid">
+                    <!-- Job cards will be dynamically inserted here -->
+                </div>
             </div>
-            <div class="modal-footer">
-                <button class="btn btn-outline" id="cancel-share">Cancel</button>
+
+            <!-- Profile Page -->
+            <div id="profile-page" class="page-container" style="display: none;">
+                <div class="profile-header">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User Avatar" class="avatar avatar-lg mb-3">
+                    <h3 id="profile-name">Loading...</h3>
+                    <p class="text-muted">Affiliate Marketer</p>
+                </div>
+
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-value" id="shares-count">0</div>
+                        <div class="stat-label">Links Shared</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="points-earned">0</div>
+                        <div class="stat-label">Points Earned</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="balance-amount">Ksh. 0</div>
+                        <div class="stat-label">Balance</div>
+                    </div>
+                </div>
+
+                <div class="card shadow mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Withdraw Earnings</h5>
+                        <p>You need at least Ksh. 5000 to withdraw your earnings.</p>
+                        
+                        <div class="progress mt-3 mb-4">
+                            <div id="withdraw-progress" class="progress-bar" role="progressbar" style="width: 0%"></div>
+                        </div>
+                        
+                        <button id="withdraw-btn" class="btn btn-primary btn-block withdraw-btn disabled">
+                            <i class="fas fa-wallet mr-2"></i> Withdraw
+                        </button>
+                    </div>
+                </div>
+
+                <h4 class="mb-3">Transaction History</h4>
+                <div class="card shadow">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Job Title</th>
+                                        <th>Date & Time</th>
+                                        <th>Points</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="transaction-history">
+                                    <!-- Transactions will be inserted here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Auth Pages -->
+            <div id="auth-container" class="auth-container">
+                <!-- Login Form -->
+                <div id="login-form" class="auth-card card shadow">
+                    <div class="card-body">
+                        <div class="auth-header">
+                            <div class="auth-logo">
+                                <i class="fas fa-hand-holding-usd"></i>
+                            </div>
+                            <h3 class="auth-title">Welcome Back</h3>
+                            <p class="auth-subtitle">Sign in to your account to continue</p>
+                        </div>
+
+                        <form id="loginForm">
+                            <div class="form-group">
+                                <label for="loginEmail" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="loginEmail" placeholder="Enter your email">
+                                <div class="invalid-feedback">Please enter a valid email address</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="loginPassword" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="loginPassword" placeholder="Enter your password">
+                                <div class="invalid-feedback">Please enter your password</div>
+                            </div>
+
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe">Remember me</label>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                        </form>
+
+                        <div class="auth-footer">
+                            <p>Don't have an account? <span class="auth-switch" onclick="showRegisterForm()">Register here</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Register Form -->
+                <div id="register-form" class="auth-card card shadow" style="display: none;">
+                    <div class="card-body">
+                        <div class="auth-header">
+                            <div class="auth-logo">
+                                <i class="fas fa-hand-holding-usd"></i>
+                            </div>
+                            <h3 class="auth-title">Create Account</h3>
+                            <p class="auth-subtitle">Join our platform to start earning</p>
+                        </div>
+
+                        <form id="registerForm">
+                            <div class="form-group">
+                                <label for="registerName" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="registerName" placeholder="Enter your full name">
+                                <div class="invalid-feedback">Please enter your full name</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="registerEmail" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="registerEmail" placeholder="Enter your email">
+                                <div class="invalid-feedback">Please enter a valid email address</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="registerPassword" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="registerPassword" placeholder="Create a password">
+                                <div class="invalid-feedback">Password must be at least 6 characters</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="registerConfirmPassword" class="form-label">Confirm Password</label>
+                                <input type="password" class="form-control" id="registerConfirmPassword" placeholder="Confirm your password">
+                                <div class="invalid-feedback">Passwords do not match</div>
+                            </div>
+
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="agreeTerms">
+                                <label class="form-check-label" for="agreeTerms">I agree to the <a href="#">Terms & Conditions</a></label>
+                                <div class="invalid-feedback">You must agree to the terms</div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block">Register</button>
+                        </form>
+
+                        <div class="auth-footer">
+                            <p>Already have an account? <span class="auth-switch" onclick="showLoginForm()">Sign in here</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Share Modal -->
+    <div id="shareModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Share This Job</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="share-modal-text">Share this job with your friends and earn Ksh. 100 per successful referral!</p>
+                    <div class="share-options">
+                        <button class="share-btn whatsapp" onclick="shareViaWhatsApp()">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>WhatsApp</span>
+                        </button>
+                        <button class="share-btn facebook" onclick="shareViaFacebook()">
+                            <i class="fab fa-facebook"></i>
+                            <span>Facebook</span>
+                        </button>
+                        <button class="share-btn link" onclick="copyToClipboard()">
+                            <i class="fas fa-link"></i>
+                            <span>Copy Link</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- Withdrawal Modal -->
-    <div class="modal-overlay" id="withdraw-modal">
-        <div class="modal">
-            <div class="modal-header">
-                <h3 class="modal-title">Withdraw Earnings</h3>
-                <button class="modal-close" id="close-withdraw-modal">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div id="withdraw-success">
-                    <div class="text-center py-4">
-                        <i class="fas fa-check-circle" style="font-size: 4rem; color: var(--success-color);"></i>
-                        <h3 class="mt-3">Withdrawal Request Sent!</h3>
-                        <p>Your withdrawal request has been received. Funds will be processed within 24 hours.</p>
-                    </div>
+    <div id="withdrawalModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Withdrawal Request</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <div id="withdraw-fail" class="d-none">
-                    <div class="text-center py-4">
-                        <i class="fas fa-exclamation-circle" style="font-size: 4rem; color: var(--danger-color);"></i>
-                        <h3 class="mt-3">Limit Not Reached</h3>
-                        <p>You need at least 5000 points (Ksh. 5000) to withdraw. You currently have <span id="current-points">0</span> points.</p>
-                        <p class="mt-3">Deposit Ksh. 299 to double your balance instantly!</p>
-                        <a href="https://wa.me/254725401725" class="btn btn-success mt-3">
-                            <i class="fab fa-whatsapp"></i> Contact Support
-                        </a>
-                    </div>
+                <div class="modal-body">
+                    <p id="withdrawal-modal-text"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button class="btn btn-outline" id="close-withdraw-btn">Close</button>
-            </div>
         </div>
     </div>
-
-    <!-- Logout Confirmation Modal -->
-    <div class="modal-overlay" id="logout-modal">
-        <div class="modal">
-            <div class="modal-header">
-                <h3 class="modal-title">Confirm Logout</h3>
-                <button class="modal-close" id="close-logout-modal">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Are you sure you want to logout?</p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-outline" id="cancel-logout">Cancel</button>
-                <button class="btn btn-danger" id="confirm-logout">Logout</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Notification -->
-    <div class="notification d-none" id="notification">
-        <div class="notification-icon">
-            <i class="fas fa-check-circle"></i>
-        </div>
-        <div class="notification-content">
-            <h4 class="notification-title">Success</h4>
-            <p class="notification-message">Your action was completed successfully.</p>
-        </div>
-        <button class="notification-close" id="close-notification">
-            <i class="fas fa-times"></i>
-        </button>
-    </div>
-
-    <!-- Confetti Elements (will be added dynamically) -->
 
     <script>
-        // Wait for DOM to be fully loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            // Simulate loading delay
-            setTimeout(function() {
-                document.getElementById('loader').classList.add('fade-out');
-                setTimeout(function() {
-                    document.getElementById('loader').style.display = 'none';
-                }, 500);
-            }, 1500);
-
-            // Initialize app
-            initApp();
-        });
-
-        // Main App Initialization
-        function initApp() {
-            // Check if user is logged in
-            checkAuthState();
-
-            // Initialize theme
-            initTheme();
-
-            // Initialize event listeners
-            initEventListeners();
-
-            // Load job listings
-            loadJobListings();
-
-            // Show home page by default
-            showPage('home');
-        }
-
-        // Check authentication state
-        function checkAuthState() {
-            const currentUser = localStorage.getItem('currentUser');
-            const loginPage = document.getElementById('login-page');
-            const registerPage = document.getElementById('register-page');
-            const mainPages = document.querySelectorAll('.page:not(#login-page):not(#register-page)');
-
-            if (currentUser) {
-                // User is logged in
-                loginPage.classList.add('d-none');
-                registerPage.classList.add('d-none');
-                
-                // Load user data
-                loadUserData();
-            } else {
-                // User is not logged in
-                mainPages.forEach(page => page.classList.add('d-none'));
-                loginPage.classList.remove('d-none');
+        // Global Variables
+        let currentUser = null;
+        let currentPage = 'auth';
+        let currentJobToShare = null;
+        const jobs = [
+            {
+                id: 1,
+                title: "Luxury Beach Resort Mombasa",
+                description: "Earn commission by referring guests to this 5-star beach resort in Mombasa. Perfect for vacation bookings.",
+                image: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                points: 100,
+                earnings: 100
+            },
+            {
+                id: 2,
+                title: "Nairobi City Hotel",
+                description: "Refer business travelers to this centrally located hotel in Nairobi. Great for corporate stays and conferences.",
+                image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                points: 100,
+                earnings: 100
+            },
+            {
+                id: 3,
+                title: "Safari Lodge Maasai Mara",
+                description: "Promote this luxury safari lodge in the Maasai Mara and earn commissions on bookings during the great migration season.",
+                image: "https://images.unsplash.com/photo-1589927986089-35812388d1f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                points: 100,
+                earnings: 100
+            },
+            {
+                id: 4,
+                title: "Boutique Hotel Karen",
+                description: "Earn by referring guests to this charming boutique hotel in the leafy suburbs of Karen, Nairobi.",
+                image: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                points: 100,
+                earnings: 100
+            },
+            {
+                id: 5,
+                title: "Lake Naivasha Resort",
+                description: "Promote this lakeside resort perfect for weekend getaways and earn commissions on all referred bookings.",
+                image: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                points: 100,
+                earnings: 100
+            },
+            {
+                id: 6,
+                title: "Diani Beach Villa",
+                description: "Luxury beachfront villa rentals in Diani. Earn high commissions for each successful booking referral.",
+                image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                points: 100,
+                earnings: 100
+            },
+            {
+                id: 7,
+                title: "Mountain View Lodge",
+                description: "Refer guests to this scenic mountain lodge with breathtaking views of Mount Kenya.",
+                image: "https://images.unsplash.com/photo-1568084680786-a84f91d1153c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                points: 100,
+                earnings: 100
+            },
+            {
+                id: 8,
+                title: "City Apartments Nairobi",
+                description: "Earn by referring guests to these serviced apartments ideal for long-term stays in Nairobi.",
+                image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                points: 100,
+                earnings: 100
+            },
+            {
+                id: 9,
+                title: "Lamu Island Retreat",
+                description: "Promote this unique Swahili-style retreat on Lamu Island and earn commissions on bookings.",
+                image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                points: 100,
+                earnings: 100
+            },
+            {
+                id: 10,
+                title: "Wildlife Camp Amboseli",
+                description: "Refer guests to this authentic wildlife camp with spectacular views of Kilimanjaro.",
+                image: "https://images.unsplash.com/photo-1531219572328-a0171b4448a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                points: 100,
+                earnings: 100
             }
-        }
+        ];
 
-        // Initialize theme
-        function initTheme() {
-            const themeToggle = document.getElementById('theme-toggle');
-            const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
-            const savedTheme = localStorage.getItem('theme') || 'light';
+        // DOM Elements
+        const loadingScreen = document.querySelector('.loading-screen');
+        const appContainer = document.getElementById('app');
+        const authContainer = document.getElementById('auth-container');
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        const homePage = document.getElementById('home-page');
+        const jobsPage = document.getElementById('jobs-page');
+        const profilePage = document.getElementById('profile-page');
+        const logoutBtn = document.getElementById('logout-btn');
+        const themeToggle = document.getElementById('theme-toggle');
+        const jobsGrid = document.querySelector('.jobs-grid');
+        const shareModal = document.getElementById('shareModal');
+        const withdrawalModal = document.getElementById('withdrawalModal');
+        const shareModalText = document.getElementById('share-modal-text');
+        const withdrawalModalText = document.getElementById('withdrawal-modal-text');
+        const profileName = document.getElementById('profile-name');
+        const sharesCount = document.getElementById('shares-count');
+        const pointsEarned = document.getElementById('points-earned');
+        const balanceAmount = document.getElementById('balance-amount');
+        const withdrawProgress = document.getElementById('withdraw-progress');
+        const withdrawBtn = document.getElementById('withdraw-btn');
+        const transactionHistory = document.getElementById('transaction-history');
 
-            // Apply saved theme
-            document.documentElement.setAttribute('data-theme', savedTheme);
-
-            // Update toggle button icon
-            updateThemeToggleIcon();
-
-            // Theme toggle event
-            themeToggle.addEventListener('click', toggleTheme);
-            mobileThemeToggle.addEventListener('click', toggleTheme);
-        }
-
-        // Toggle between light and dark theme
-        function toggleTheme() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-
-            // Apply new theme
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-
-            // Update toggle button icon
-            updateThemeToggleIcon();
-        }
-
-        // Update theme toggle button icon
-        function updateThemeToggleIcon() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const themeToggle = document.getElementById('theme-toggle');
-            const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
-
-            if (currentTheme === 'dark') {
-                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-                mobileThemeToggle.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
-            } else {
-                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-                mobileThemeToggle.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+        // Initialize the application
+        function init() {
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeToggle.checked = true;
             }
+
+            // Check if user is already logged in
+            checkAuthStatus();
+
+            // Set up event listeners
+            setupEventListeners();
+
+            // Hide loading screen after 2 seconds
+            setTimeout(() => {
+                loadingScreen.classList.add('hidden');
+            }, 2000);
         }
 
-        // Initialize event listeners
-        function initEventListeners() {
-            // Navigation links
-            const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link, .bottom-nav-item');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const page = this.getAttribute('data-page');
-                    if (page) {
-                        showPage(page);
-                    }
+        // Set up event listeners
+        function setupEventListeners() {
+            // Theme toggle
+            themeToggle.addEventListener('change', toggleTheme);
+
+            // Auth forms
+            document.getElementById('loginForm').addEventListener('submit', handleLogin);
+            document.getElementById('registerForm').addEventListener('submit', handleRegister);
+
+            // Logout button
+            logoutBtn.addEventListener('click', handleLogout);
+
+            // Modal close buttons
+            document.querySelectorAll('[data-dismiss="modal"]').forEach(button => {
+                button.addEventListener('click', () => {
+                    const modal = button.closest('.modal');
+                    closeModal(modal);
                 });
-            });
-
-            // Home link
-            document.getElementById('home-link').addEventListener('click', function(e) {
-                e.preventDefault();
-                showPage('home');
-            });
-
-            // Mobile menu toggle
-            document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-                document.getElementById('mobile-menu').classList.add('active');
-            });
-
-            // Close mobile menu
-            document.getElementById('close-mobile-menu').addEventListener('click', function() {
-                document.getElementById('mobile-menu').classList.remove('active');
-            });
-
-            // Show register form
-            document.getElementById('show-register').addEventListener('click', function(e) {
-                e.preventDefault();
-                document.getElementById('login-page').classList.add('d-none');
-                document.getElementById('register-page').classList.remove('d-none');
-            });
-
-            // Show login form
-            document.getElementById('show-login').addEventListener('click', function(e) {
-                e.preventDefault();
-                document.getElementById('register-page').classList.add('d-none');
-                document.getElementById('login-page').classList.remove('d-none');
-            });
-
-            // Login form submission
-            document.getElementById('login-form').addEventListener('submit', function(e) {
-                e.preventDefault();
-                loginUser();
-            });
-
-            // Register form submission
-            document.getElementById('register-form').addEventListener('submit', function(e) {
-                e.preventDefault();
-                registerUser();
-            });
-
-            // Logout buttons
-            document.getElementById('logout-btn').addEventListener('click', function(e) {
-                e.preventDefault();
-                document.getElementById('logout-modal').classList.add('active');
-            });
-
-            document.getElementById('mobile-logout-btn').addEventListener('click', function(e) {
-                e.preventDefault();
-                document.getElementById('logout-modal').classList.add('active');
-            });
-
-            // Logout modal buttons
-            document.getElementById('close-logout-modal').addEventListener('click', function() {
-                document.getElementById('logout-modal').classList.remove('active');
-            });
-
-            document.getElementById('cancel-logout').addEventListener('click', function() {
-                document.getElementById('logout-modal').classList.remove('active');
-            });
-
-            document.getElementById('confirm-logout').addEventListener('click', function() {
-                logoutUser();
-            });
-
-            // Job filter buttons
-            const filterBtns = document.querySelectorAll('[data-filter]');
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    filterJobs(this.getAttribute('data-filter'));
-                });
-            });
-
-            // Job search
-            document.getElementById('job-search').addEventListener('input', function() {
-                searchJobs(this.value);
             });
 
             // Withdraw button
-            document.getElementById('withdraw-btn').addEventListener('click', function() {
-                checkWithdrawal();
-            });
-
-            // Close withdraw modal
-            document.getElementById('close-withdraw-modal').addEventListener('click', function() {
-                document.getElementById('withdraw-modal').classList.remove('active');
-            });
-
-            document.getElementById('close-withdraw-btn').addEventListener('click', function() {
-                document.getElementById('withdraw-modal').classList.remove('active');
-            });
-
-            // Share modal
-            document.getElementById('close-share-modal').addEventListener('click', function() {
-                document.getElementById('share-modal').classList.remove('active');
-            });
-
-            document.getElementById('cancel-share').addEventListener('click', function() {
-                document.getElementById('share-modal').classList.remove('active');
-            });
-
-            // Copy link button
-            document.getElementById('copy-link-btn').addEventListener('click', function() {
-                copyToClipboard(document.getElementById('share-link-input'));
-                showNotification('Link copied to clipboard!', 'success');
-            });
-
-            // Share options
-            const shareOptions = document.querySelectorAll('.share-option');
-            shareOptions.forEach(option => {
-                option.addEventListener('click', function() {
-                    const platform = this.getAttribute('data-share');
-                    shareJob(platform);
-                });
-            });
-
-            // Close notification
-            document.getElementById('close-notification').addEventListener('click', function() {
-                document.getElementById('notification').classList.remove('active');
-            });
+            withdrawBtn.addEventListener('click', handleWithdrawal);
         }
 
-        // Show specific page
-        function showPage(page) {
+        // Check authentication status
+        function checkAuthStatus() {
+            const user = JSON.parse(localStorage.getItem('currentUser'));
+            if (user) {
+                currentUser = user;
+                showAuthenticatedUI();
+                navigateTo('home');
+            } else {
+                showAuthUI();
+            }
+        }
+
+        // Show authenticated UI
+        function showAuthenticatedUI() {
+            authContainer.style.display = 'none';
+            logoutBtn.style.display = 'block';
+            updateProfileData();
+            renderJobs();
+        }
+
+        // Show auth UI
+        function showAuthUI() {
+            authContainer.style.display = 'flex';
+            homePage.style.display = 'none';
+            jobsPage.style.display = 'none';
+            profilePage.style.display = 'none';
+            logoutBtn.style.display = 'none';
+            currentPage = 'auth';
+            updateActiveNavLink();
+        }
+
+        // Toggle theme
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const theme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
+        }
+
+        // Show login form
+        function showLoginForm() {
+            loginForm.style.display = 'block';
+            registerForm.style.display = 'none';
+        }
+
+        // Show register form
+        function showRegisterForm() {
+            loginForm.style.display = 'none';
+            registerForm.style.display = 'block';
+        }
+
+        // Handle login
+        function handleLogin(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            // Simple validation
+            if (!email || !password) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            // Check if user exists
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const user = users.find(u => u.email === email && u.password === password);
+            
+            if (user) {
+                // Login successful
+                currentUser = user;
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                showAuthenticatedUI();
+                navigateTo('home');
+                
+                // Show success message
+                alert('Login successful!');
+            } else {
+                alert('Invalid email or password');
+            }
+        }
+
+        // Handle register
+        function handleRegister(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('registerConfirmPassword').value;
+            const agreeTerms = document.getElementById('agreeTerms').checked;
+            
+            // Validation
+            if (!name || !email || !password || !confirmPassword) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                alert('Passwords do not match');
+                return;
+            }
+            
+            if (!agreeTerms) {
+                alert('You must agree to the terms and conditions');
+                return;
+            }
+            
+            // Check if user already exists
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const userExists = users.some(u => u.email === email);
+            
+            if (userExists) {
+                alert('User with this email already exists');
+                return;
+            }
+            
+            // Create new user
+            const newUser = {
+                id: Date.now(),
+                name,
+                email,
+                password,
+                shares: 0,
+                points: 0,
+                balance: 0,
+                transactions: []
+            };
+            
+            users.push(newUser);
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            // Login the new user
+            currentUser = newUser;
+            localStorage.setItem('currentUser', JSON.stringify(newUser));
+            showAuthenticatedUI();
+            navigateTo('home');
+            
+            // Show success message
+            alert('Registration successful!');
+        }
+
+        // Handle logout
+        function handleLogout() {
+            currentUser = null;
+            localStorage.removeItem('currentUser');
+            showAuthUI();
+            showLoginForm();
+        }
+
+        // Navigate between pages
+        function navigateTo(page) {
             // Hide all pages
-            document.querySelectorAll('.page').forEach(p => p.classList.add('d-none'));
-
-            // Show selected page
-            document.getElementById(`${page}-page`).classList.remove('d-none');
-
-            // Update active nav items
-            updateActiveNavItem(page);
-
-            // Close mobile menu if open
-            document.getElementById('mobile-menu').classList.remove('active');
-
+            homePage.style.display = 'none';
+            jobsPage.style.display = 'none';
+            profilePage.style.display = 'none';
+            
+            // Show the requested page
+            switch(page) {
+                case 'home':
+                    homePage.style.display = 'block';
+                    break;
+                case 'jobs':
+                    jobsPage.style.display = 'block';
+                    break;
+                case 'profile':
+                    profilePage.style.display = 'block';
+                    updateProfileData();
+                    break;
+                default:
+                    homePage.style.display = 'block';
+            }
+            
+            currentPage = page;
+            updateActiveNavLink();
+            
             // Scroll to top
             window.scrollTo(0, 0);
         }
 
-        // Update active navigation item
-        function updateActiveNavItem(page) {
-            // Desktop nav
+        // Update active nav link
+        function updateActiveNavLink() {
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('data-page') === page) {
-                    link.classList.add('active');
+            });
+            
+            if (currentPage !== 'auth') {
+                const activeLink = document.querySelector(`.nav-link[onclick="navigateTo('${currentPage}')"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
                 }
-            });
-
-            // Mobile nav
-            document.querySelectorAll('.mobile-nav-link').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('data-page') === page) {
-                    link.classList.add('active');
-                }
-            });
-
-            // Bottom nav
-            document.querySelectorAll('.bottom-nav-item').forEach(item => {
-                item.classList.remove('active');
-                if (item.getAttribute('data-page') === page) {
-                    item.classList.add('active');
-                }
-            });
-        }
-
-        // Login user
-        function loginUser() {
-            const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
-
-            // Simple validation
-            if (!email || !password) {
-                showNotification('Please fill in all fields', 'error');
-                return;
-            }
-
-            // Check if user exists
-            const users = JSON.parse(localStorage.getItem('users')) || [];
-            const user = users.find(u => u.email === email && u.password === password);
-
-            if (user) {
-                // Set current user
-                localStorage.setItem('currentUser', JSON.stringify(user));
-                
-                // Show success notification
-                showNotification('Login successful!', 'success');
-
-                // Hide auth pages and show main pages
-                document.getElementById('login-page').classList.add('d-none');
-                document.getElementById('register-page').classList.add('d-none');
-
-                // Load user data
-                loadUserData();
-
-                // Show home page
-                showPage('home');
-            } else {
-                showNotification('Invalid email or password', 'error');
             }
         }
 
-        // Register user
-        function registerUser() {
-            const name = document.getElementById('register-name').value;
-            const email = document.getElementById('register-email').value;
-            const password = document.getElementById('register-password').value;
-            const confirmPassword = document.getElementById('register-confirm').value;
-
-            // Simple validation
-            if (!name || !email || !password || !confirmPassword) {
-                showNotification('Please fill in all fields', 'error');
-                return;
-            }
-
-            if (password !== confirmPassword) {
-                showNotification('Passwords do not match', 'error');
-                return;
-            }
-
-            // Check if user already exists
-            const users = JSON.parse(localStorage.getItem('users')) || [];
-            const userExists = users.some(u => u.email === email);
-
-            if (userExists) {
-                showNotification('User with this email already exists', 'error');
-                return;
-            }
-
-            // Create new user
-            const newUser = {
-                id: Date.now().toString(),
-                name,
-                email,
-                password,
-                points: 0,
-                linksShared: 0,
-                balance: 0,
-                transactions: []
-            };
-
-            // Save user
-            users.push(newUser);
-            localStorage.setItem('users', JSON.stringify(users));
-
-            // Set current user
-            localStorage.setItem('currentUser', JSON.stringify(newUser));
-
-            // Show success notification
-            showNotification('Registration successful!', 'success');
-
-            // Hide auth pages and show main pages
-            document.getElementById('register-page').classList.add('d-none');
-            document.getElementById('login-page').classList.add('d-none');
-
-            // Load user data
-            loadUserData();
-
-            // Show home page
-            showPage('home');
-        }
-
-        // Logout user
-        function logoutUser() {
-            // Clear current user
-            localStorage.removeItem('currentUser');
-
-            // Close logout modal
-            document.getElementById('logout-modal').classList.remove('active');
-
-            // Show auth pages
-            document.getElementById('login-page').classList.remove('d-none');
-            document.getElementById('register-page').classList.add('d-none');
-
-            // Hide main pages
-            document.querySelectorAll('.page:not(#login-page):not(#register-page)').forEach(page => {
-                page.classList.add('d-none');
-            });
-
-            // Show notification
-            showNotification('Logged out successfully', 'success');
-        }
-
-        // Load user data
-        function loadUserData() {
-            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-            if (!currentUser) return;
-
-            // Update profile page
-            document.getElementById('profile-name').textContent = currentUser.name;
-            document.getElementById('profile-email').textContent = currentUser.email;
-            document.getElementById('profile-avatar').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(currentUser.name)}&background=4361ee&color=fff&size=120`;
-
-            // Update stats
-            document.getElementById('links-shared').textContent = currentUser.linksShared;
-            document.getElementById('total-points').textContent = currentUser.points;
-            document.getElementById('balance').textContent = `Ksh. ${currentUser.points}`;
-
-            // Update progress
-            const progressPercentage = Math.min((currentUser.points / 5000) * 100, 100);
-            document.getElementById('progress-fill').style.width = `${progressPercentage}%`;
-            document.getElementById('progress-text').textContent = `${currentUser.points}/5000 points`;
-
-            // Update withdraw button
-            const withdrawBtn = document.getElementById('withdraw-btn');
-            if (currentUser.points >= 5000) {
-                withdrawBtn.classList.add('pulse');
-                withdrawBtn.disabled = false;
-            } else {
-                withdrawBtn.classList.remove('pulse');
-                withdrawBtn.disabled = false;
-            }
-
-            // Load transaction history
-            loadTransactionHistory(currentUser.transactions);
-        }
-
-        // Load transaction history
-        function loadTransactionHistory(transactions) {
-            const tbody = document.getElementById('transaction-history');
-            tbody.innerHTML = '';
-
-            if (transactions.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="4" class="text-center">No transactions yet</td></tr>';
-                return;
-            }
-
-            // Sort by date (newest first)
-            transactions.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-            transactions.forEach(transaction => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td>${transaction.jobTitle}</td>
-                    <td>${formatDate(transaction.date)}</td>
-                    <td>+${transaction.points}</td>
-                    <td><span class="status-badge status-success">Completed</span></td>
-                `;
-                tbody.appendChild(tr);
-            });
-        }
-
-        // Format date
-        function formatDate(dateString) {
-            const date = new Date(dateString);
-            return date.toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-            });
-        }
-
-        // Load job listings
-        function loadJobListings() {
-            const jobs = [
-                {
-                    id: '1',
-                    title: 'Luxury Hotel Booking in Mombasa',
-                    company: 'Beachfront Resorts',
-                    description: 'Share this amazing deal for a 5-star beachfront hotel in Mombasa. Limited time offer with 30% discount for bookings made through this link.',
-                    category: 'hotels',
-                    link: 'https://example.com/hotels/mombasa-beach-resort',
-                    points: 100
-                },
-                {
-                    id: '2',
-                    title: 'Safari Adventure Package',
-                    company: 'Wildlife Tours Kenya',
-                    description: 'Promote our 7-day safari package to Maasai Mara and Amboseli. Includes accommodation, meals, and game drives. Perfect for wildlife enthusiasts!',
-                    category: 'travel',
-                    link: 'https://example.com/tours/safari-adventure',
-                    points: 100
-                },
-                {
-                    id: '3',
-                    title: 'Online Shopping Discount',
-                    company: 'Jumia Kenya',
-                    description: 'Share this link to give your friends 15% off their first order on Jumia Kenya. Valid on electronics, fashion, home appliances and more.',
-                    category: 'shopping',
-                    link: 'https://example.com/jumia-discount',
-                    points: 100
-                },
-                {
-                    id: '4',
-                    title: 'Nairobi City Hotel Deal',
-                    company: 'Urban Stays',
-                    description: 'Special rates for business travelers in Nairobi CBD. Modern rooms with free WiFi and breakfast included. Book through this link for best prices.',
-                    category: 'hotels',
-                    link: 'https://example.com/hotels/nairobi-city',
-                    points: 100
-                },
-                {
-                    id: '5',
-                    title: 'Coastal Vacation Package',
-                    company: 'Coastal Getaways',
-                    description: 'All-inclusive 5-night package to Diani Beach. Flights, transfers, accommodation and meals included. Share with friends who need a beach vacation!',
-                    category: 'travel',
-                    link: 'https://example.com/travel/coastal-package',
-                    points: 100
-                },
-                {
-                    id: '6',
-                    title: 'Electronics Mega Sale',
-                    company: 'Safaricom Shop',
-                    description: 'Huge discounts on smartphones, laptops, and accessories. Limited stock available. Share this exclusive link with your network.',
-                    category: 'shopping',
-                    link: 'https://example.com/safaricom-electronics',
-                    points: 100
-                },
-                {
-                    id: '7',
-                    title: 'Mountain Lodge Retreat',
-                    company: 'Highland Escapes',
-                    description: 'Escape to the cool highlands with this 3-night package. Perfect for couples and families. Stunning views and nature walks included.',
-                    category: 'hotels',
-                    link: 'https://example.com/hotels/mountain-retreat',
-                    points: 100
-                },
-                {
-                    id: '8',
-                    title: 'Cultural Tour Experience',
-                    company: 'Heritage Kenya',
-                    description: 'Discover Kenya\'s rich cultural heritage with this unique tour. Visit traditional villages, museums, and historical sites. Book now!',
-                    category: 'travel',
-                    link: 'https://example.com/tours/cultural-experience',
-                    points: 100
-                },
-                {
-                    id: '9',
-                    title: 'Fashion & Accessories Sale',
-                    company: 'Zara Kenya',
-                    description: 'Up to 50% off on selected fashion items and accessories. Valid for 7 days only. Share with fashion lovers in your network.',
-                    category: 'shopping',
-                    link: 'https://example.com/zara-sale',
-                    points: 100
-                },
-                {
-                    id: '10',
-                    title: 'Luxury Treehouse Experience',
-                    company: 'Nature Stays',
-                    description: 'Unique treehouse accommodation in a private forest reserve. Perfect for romantic getaways or nature lovers. Book through this special link.',
-                    category: 'hotels',
-                    link: 'https://example.com/hotels/treehouse',
-                    points: 100
-                }
-            ];
-
-            const jobListings = document.getElementById('job-listings');
-            jobListings.innerHTML = '';
-
+        // Render jobs
+        function renderJobs() {
+            jobsGrid.innerHTML = '';
+            
             jobs.forEach(job => {
                 const jobCard = document.createElement('div');
-                jobCard.className = `job-card ${job.category}`;
+                jobCard.className = 'card job-card';
                 jobCard.innerHTML = `
-                    <div class="job-card-header">
-                        <h3 class="job-card-title">${job.title}</h3>
-                        <p class="job-card-company">${job.company}</p>
-                        <div class="job-card-meta">
-                            <div class="job-meta-item">
-                                <i class="fas fa-coins"></i>
-                                <span>${job.points} Points</span>
-                            </div>
-                            <div class="job-meta-item">
-                                <i class="fas fa-money-bill-wave"></i>
-                                <span>Ksh. ${job.points}</span>
-                            </div>
+                    <img src="${job.image}" class="card-img-top" alt="${job.title}">
+                    <div class="card-body">
+                        <h5 class="card-title">${job.title}</h5>
+                        <p class="card-text">${job.description}</p>
+                        <div class="job-meta">
+                            <span class="job-reward">Earn Ksh. ${job.earnings}</span>
+                            <span class="job-points">${job.points} Points per share</span>
                         </div>
-                    </div>
-                    <div class="job-card-body">
-                        <p class="job-card-description">${job.description}</p>
-                    </div>
-                    <div class="job-card-footer">
-                        <div class="job-card-reward">
-                            <i class="fas fa-gift"></i>
-                            <span>Earn Ksh. ${job.points}</span>
-                        </div>
-                        <div class="job-card-actions">
-                            <button class="btn btn-sm share-btn" data-job-id="${job.id}">Share & Earn</button>
-                        </div>
+                        <button class="btn btn-primary btn-block mt-3 share-btn-job" onclick="showShareModal(${job.id})">
+                            <i class="fas fa-share-alt mr-2"></i> Share & Earn
+                        </button>
                     </div>
                 `;
-                jobListings.appendChild(jobCard);
-            });
-
-            // Add event listeners to share buttons
-            document.querySelectorAll('.share-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const jobId = this.getAttribute('data-job-id');
-                    openShareModal(jobId);
-                });
+                
+                jobsGrid.appendChild(jobCard);
             });
         }
 
-        // Open share modal
-        function openShareModal(jobId) {
-            const jobs = [
-                {
-                    id: '1',
-                    title: 'Luxury Hotel Booking in Mombasa',
-                    link: 'https://example.com/hotels/mombasa-beach-resort'
-                },
-                {
-                    id: '2',
-                    title: 'Safari Adventure Package',
-                    link: 'https://example.com/tours/safari-adventure'
-                },
-                {
-                    id: '3',
-                    title: 'Online Shopping Discount',
-                    link: 'https://example.com/jumia-discount'
-                },
-                {
-                    id: '4',
-                    title: 'Nairobi City Hotel Deal',
-                    link: 'https://example.com/hotels/nairobi-city'
-                },
-                {
-                    id: '5',
-                    title: 'Coastal Vacation Package',
-                    link: 'https://example.com/travel/coastal-package'
-                },
-                {
-                    id: '6',
-                    title: 'Electronics Mega Sale',
-                    link: 'https://example.com/safaricom-electronics'
-                },
-                {
-                    id: '7',
-                    title: 'Mountain Lodge Retreat',
-                    link: 'https://example.com/hotels/mountain-retreat'
-                },
-                {
-                    id: '8',
-                    title: 'Cultural Tour Experience',
-                    link: 'https://example.com/tours/cultural-experience'
-                },
-                {
-                    id: '9',
-                    title: 'Fashion & Accessories Sale',
-                    link: 'https://example.com/zara-sale'
-                },
-                {
-                    id: '10',
-                    title: 'Luxury Treehouse Experience',
-                    link: 'https://example.com/hotels/treehouse'
+        // Show share modal
+        function showShareModal(jobId) {
+            if (jobId === 'referral') {
+                // Referral share
+                shareModalText.textContent = "Share your referral link with friends and earn 1000 bonus points when they sign up and share their first job!";
+                currentJobToShare = {
+                    id: 'referral',
+                    title: 'AffiJobs Referral',
+                    points: 1000,
+                    earnings: 1000
+                };
+            } else {
+                // Job share
+                const job = jobs.find(j => j.id === jobId);
+                if (job) {
+                    shareModalText.textContent = `Share "${job.title}" with your friends and earn Ksh. ${job.earnings} per successful referral!`;
+                    currentJobToShare = job;
                 }
-            ];
-
-            const job = jobs.find(j => j.id === jobId);
-            if (!job) return;
-
-            // Set share link
-            document.getElementById('share-link-input').value = job.link;
-            document.getElementById('share-modal').classList.add('active');
-
-            // Store current job for sharing
-            document.getElementById('share-modal').setAttribute('data-job-id', jobId);
-            document.getElementById('share-modal').setAttribute('data-job-title', job.title);
-        }
-
-        // Share job
-        function shareJob(platform) {
-            const jobId = document.getElementById('share-modal').getAttribute('data-job-id');
-            const jobTitle = document.getElementById('share-modal').getAttribute('data-job-title');
-            const jobLink = document.getElementById('share-link-input').value;
-            const shareText = `Check out this amazing offer: ${jobTitle} - ${jobLink}`;
-
-            switch (platform) {
-                case 'whatsapp':
-                    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`, '_blank');
-                    break;
-                case 'facebook':
-                    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(jobLink)}`, '_blank');
-                    break;
-                case 'twitter':
-                    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`, '_blank');
-                    break;
-                case 'link':
-                    // Already handled by copy button
-                    return;
             }
-
-            // Record the share
-            recordJobShare(jobId, jobTitle);
+            
+            openModal(shareModal);
         }
 
-        // Record job share
-        function recordJobShare(jobId, jobTitle) {
-            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        // Share via WhatsApp
+        function shareViaWhatsApp() {
+            if (!currentJobToShare) return;
+            
+            let message, shareUrl;
+            
+            if (currentJobToShare.id === 'referral') {
+                message = `Join AffiJobs using my referral link and earn Ksh. 1000 bonus when you sign up and share your first job: ${window.location.href}?ref=${currentUser.id}`;
+                shareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+            } else {
+                message = `Check out this amazing opportunity: ${currentJobToShare.title}. Earn money by sharing affiliate jobs: ${window.location.href}?job=${currentJobToShare.id}`;
+                shareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+            }
+            
+            window.open(shareUrl, '_blank');
+            
+            // Only record the share if it's a job (not referral)
+            if (currentJobToShare.id !== 'referral') {
+                recordShare(currentJobToShare);
+            }
+            
+            closeModal(shareModal);
+        }
+
+        // Share via Facebook
+        function shareViaFacebook() {
+            if (!currentJobToShare) return;
+            
+            let shareUrl;
+            
+            if (currentJobToShare.id === 'referral') {
+                shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href + '?ref=' + currentUser.id)}`;
+            } else {
+                shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href + '?job=' + currentJobToShare.id)}`;
+            }
+            
+            window.open(shareUrl, '_blank');
+            
+            // Only record the share if it's a job (not referral)
+            if (currentJobToShare.id !== 'referral') {
+                recordShare(currentJobToShare);
+            }
+            
+            closeModal(shareModal);
+        }
+
+        // Copy to clipboard
+        function copyToClipboard() {
+            if (!currentJobToShare) return;
+            
+            let textToCopy;
+            
+            if (currentJobToShare.id === 'referral') {
+                textToCopy = `Join AffiJobs using my referral link and earn Ksh. 1000 bonus when you sign up and share your first job: ${window.location.href}?ref=${currentUser.id}`;
+            } else {
+                textToCopy = `Check out this amazing opportunity: ${currentJobToShare.title}. Earn money by sharing affiliate jobs: ${window.location.href}?job=${currentJobToShare.id}`;
+            }
+            
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                alert('Link copied to clipboard!');
+                
+                // Only record the share if it's a job (not referral)
+                if (currentJobToShare.id !== 'referral') {
+                    recordShare(currentJobToShare);
+                }
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                alert('Failed to copy link. Please try again.');
+            });
+            
+            closeModal(shareModal);
+        }
+
+        // Record a share
+        function recordShare(job) {
             if (!currentUser) return;
-
+            
             // Update user data
-            currentUser.linksShared += 1;
-            currentUser.points += 100;
-            currentUser.balance = currentUser.points;
-
-            // Add transaction
-            const transaction = {
-                id: Date.now().toString(),
-                jobId,
-                jobTitle,
-                points: 100,
-                date: new Date().toISOString()
-            };
-            currentUser.transactions.push(transaction);
-
-            // Update all users data
             const users = JSON.parse(localStorage.getItem('users')) || [];
             const userIndex = users.findIndex(u => u.id === currentUser.id);
+            
             if (userIndex !== -1) {
-                users[userIndex] = currentUser;
+                // Create transaction
+                const transaction = {
+                    id: Date.now(),
+                    jobId: job.id,
+                    jobTitle: job.title,
+                    date: new Date().toISOString(),
+                    points: job.points,
+                    earnings: job.earnings
+                };
+                
+                // Update user
+                users[userIndex].shares += 1;
+                users[userIndex].points += job.points;
+                users[userIndex].balance += job.earnings;
+                users[userIndex].transactions.unshift(transaction);
+                
+                // Save to localStorage
+                localStorage.setItem('users', JSON.stringify(users));
+                localStorage.setItem('currentUser', JSON.stringify(users[userIndex]));
+                
+                // Update current user
+                currentUser = users[userIndex];
+                
+                // Update UI
+                updateProfileData();
+                
+                // Check for milestone rewards
+                checkMilestones(currentUser.points);
             }
+        }
 
-            // Save data
-            localStorage.setItem('users', JSON.stringify(users));
-            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        // Update profile data
+        function updateProfileData() {
+            if (!currentUser) return;
+            
+            profileName.textContent = currentUser.name;
+            sharesCount.textContent = currentUser.shares;
+            pointsEarned.textContent = currentUser.points;
+            balanceAmount.textContent = `Ksh. ${currentUser.balance}`;
+            
+            // Update progress bar
+            const progress = Math.min((currentUser.balance / 5000) * 100, 100);
+            withdrawProgress.style.width = `${progress}%`;
+            
+            // Update withdraw button
+            if (currentUser.balance >= 5000) {
+                withdrawBtn.classList.remove('disabled');
+                withdrawBtn.classList.add('pulse');
+            } else if (currentUser.balance >= 100) {
+                withdrawBtn.classList.remove('disabled');
+                withdrawBtn.classList.remove('pulse');
+            } else {
+                withdrawBtn.classList.add('disabled');
+                withdrawBtn.classList.remove('pulse');
+            }
+            
+            // Update transaction history
+            updateTransactionHistory();
+        }
 
-            // Update UI
-            loadUserData();
+        // Update transaction history
+        function updateTransactionHistory() {
+            if (!currentUser || !currentUser.transactions) return;
+            
+            transactionHistory.innerHTML = '';
+            
+            if (currentUser.transactions.length === 0) {
+                transactionHistory.innerHTML = `
+                    <tr>
+                        <td colspan="3" class="text-center py-4">
+                            <div class="empty-state">
+                                <i class="fas fa-history"></i>
+                                <h4>No transactions yet</h4>
+                                <p>Start sharing jobs to see your transaction history here</p>
+                                <button class="btn btn-primary" onclick="navigateTo('jobs')">Browse Jobs</button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            currentUser.transactions.forEach(transaction => {
+                const date = new Date(transaction.date);
+                const formattedDate = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${transaction.jobTitle}</td>
+                    <td>${formattedDate}</td>
+                    <td>+${transaction.points}</td>
+                `;
+                
+                transactionHistory.appendChild(row);
+            });
+        }
 
-            // Close share modal
-            document.getElementById('share-modal').classList.remove('active');
-
-            // Show success notification
-            showNotification('Job shared successfully! +100 points', 'success');
-
-            // Check for milestone rewards
-            checkMilestones(currentUser.points);
+        // Handle withdrawal
+        function handleWithdrawal() {
+            if (!currentUser || withdrawBtn.classList.contains('disabled')) return;
+            
+            if (currentUser.balance >= 5000) {
+                // Successful withdrawal
+                withdrawalModalText.textContent = "Withdrawal request sent successfully! Your funds will be processed within 24 hours.";
+                
+                // Update user balance
+                const users = JSON.parse(localStorage.getItem('users')) || [];
+                const userIndex = users.findIndex(u => u.id === currentUser.id);
+                
+                if (userIndex !== -1) {
+                    users[userIndex].balance = 0;
+                    localStorage.setItem('users', JSON.stringify(users));
+                    localStorage.setItem('currentUser', JSON.stringify(users[userIndex]));
+                    currentUser = users[userIndex];
+                    updateProfileData();
+                }
+            } else if (currentUser.balance >= 100) {
+                // Minimum not reached
+                withdrawalModalText.textContent = "Limit not reached. Deposit Ksh. 300 to +254725401725 to initiate balance activation.";
+            }
+            
+            openModal(withdrawalModal);
         }
 
         // Check for milestone rewards
         function checkMilestones(points) {
-            if (points === 2500) {
-                // 2500 points milestone
+            if (points === 2500 || points === 5000) {
                 createConfetti();
-                showNotification('Congratulations! You reached 2500 points!', 'success');
-            } else if (points === 5000) {
-                // 5000 points milestone
-                createConfetti();
-                showNotification('Amazing! You reached 5000 points and can now withdraw!', 'success');
                 
-                // Update withdraw button
-                document.getElementById('withdraw-btn').classList.add('pulse');
+                // Show congratulatory message
+                setTimeout(() => {
+                    alert(`Congratulations! You've reached ${points} points!`);
+                }, 1000);
             }
         }
 
         // Create confetti effect
         function createConfetti() {
-            const colors = ['#4361ee', '#3f37c9', '#4895ef', '#4cc9f0', '#f72585'];
+            const container = document.getElementById('confetti-container');
+            container.innerHTML = '';
             
             for (let i = 0; i < 100; i++) {
                 const confetti = document.createElement('div');
                 confetti.className = 'confetti';
-                confetti.style.left = Math.random() * 100 + 'vw';
-                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.width = Math.random() * 10 + 5 + 'px';
-                confetti.style.height = Math.random() * 10 + 5 + 'px';
-                confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
-                document.body.appendChild(confetti);
                 
-                // Remove confetti after animation
-                setTimeout(() => {
-                    confetti.remove();
-                }, 5000);
-            }
-        }
-
-        // Filter jobs by category
-        function filterJobs(category) {
-            const jobCards = document.querySelectorAll('.job-card');
-            
-            jobCards.forEach(card => {
-                if (category === 'all' || card.classList.contains(category)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        // Search jobs
-        function searchJobs(query) {
-            const jobCards = document.querySelectorAll('.job-card');
-            const lowerQuery = query.toLowerCase();
-            
-            jobCards.forEach(card => {
-                const title = card.querySelector('.job-card-title').textContent.toLowerCase();
-                const company = card.querySelector('.job-card-company').textContent.toLowerCase();
-                const description = card.querySelector('.job-card-description').textContent.toLowerCase();
+                // Random position
+                const left = Math.random() * 100;
                 
-                if (title.includes(lowerQuery) || company.includes(lowerQuery) || description.includes(lowerQuery)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        // Check withdrawal eligibility
-        function checkWithdrawal() {
-            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-            if (!currentUser) return;
-
-            if (currentUser.points >= 5000) {
-                // Show success withdrawal modal
-                document.getElementById('withdraw-success').classList.remove('d-none');
-                document.getElementById('withdraw-fail').classList.add('d-none');
+                // Random color
+                const colors = ['#4361ee', '#3a0ca3', '#7209b7', '#f72585', '#4cc9f0'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
                 
-                // Reset user points
-                currentUser.points = 0;
-                currentUser.balance = 0;
+                // Random size
+                const size = Math.random() * 10 + 5;
                 
-                // Update all users data
-                const users = JSON.parse(localStorage.getItem('users')) || [];
-                const userIndex = users.findIndex(u => u.id === currentUser.id);
-                if (userIndex !== -1) {
-                    users[userIndex] = currentUser;
-                }
-
-                // Save data
-                localStorage.setItem('users', JSON.stringify(users));
-                localStorage.setItem('currentUser', JSON.stringify(currentUser));
-
-                // Update UI
-                loadUserData();
-            } else {
-                // Show fail withdrawal modal
-                document.getElementById('withdraw-success').classList.add('d-none');
-                document.getElementById('withdraw-fail').classList.remove('d-none');
-                document.getElementById('current-points').textContent = currentUser.points;
-            }
-
-            // Show modal
-            document.getElementById('withdraw-modal').classList.add('active');
-        }
-
-        // Copy to clipboard
-        function copyToClipboard(element) {
-            element.select();
-            element.setSelectionRange(0, 99999);
-            document.execCommand('copy');
-        }
-
-        // Show notification
-        function showNotification(message, type) {
-            const notification = document.getElementById('notification');
-            
-            // Set notification content
-            const icon = notification.querySelector('.notification-icon i');
-            const title = notification.querySelector('.notification-title');
-            const msg = notification.querySelector('.notification-message');
-            
-            // Update based on type
-            notification.className = 'notification';
-            notification.classList.add(`notification-${type}`);
-            notification.classList.add('active');
-            
-            switch (type) {
-                case 'success':
-                    icon.className = 'fas fa-check-circle';
-                    title.textContent = 'Success';
-                    break;
-                case 'error':
-                    icon.className = 'fas fa-exclamation-circle';
-                    title.textContent = 'Error';
-                    break;
-                case 'warning':
-                    icon.className = 'fas fa-exclamation-triangle';
-                    title.textContent = 'Warning';
-                    break;
-                case 'info':
-                    icon.className = 'fas fa-info-circle';
-                    title.textContent = 'Info';
-                    break;
+                // Random animation duration
+                const duration = Math.random() * 3 + 2;
+                
+                // Apply styles
+                confetti.style.left = `${left}%`;
+                confetti.style.backgroundColor = color;
+                confetti.style.width = `${size}px`;
+                confetti.style.height = `${size}px`;
+                confetti.style.animationDuration = `${duration}s`;
+                confetti.style.animationDelay = `${Math.random() * 2}s`;
+                
+                container.appendChild(confetti);
             }
             
-            msg.textContent = message;
-            
-            // Auto hide after 5 seconds
+            // Remove confetti after animation
             setTimeout(() => {
-                notification.classList.remove('active');
+                container.innerHTML = '';
             }, 5000);
         }
 
-        // Show advert popup
-        function showAdvertPopup() {
-            // Only show once per session
-            if (sessionStorage.getItem('adShown')) return;
+        // Open modal
+        function openModal(modal) {
+            modal.style.display = 'block';
+            document.body.classList.add('modal-open');
             
+            // Add animation class
+            const modalContent = modal.querySelector('.modal-dialog');
+            modalContent.classList.add('slide-in');
+            
+            // Remove animation class after animation completes
             setTimeout(() => {
-                showNotification('Invite friends and earn 1000 bonus points instantly!', 'info');
-                sessionStorage.setItem('adShown', 'true');
-            }, 10000);
+                modalContent.classList.remove('slide-in');
+            }, 300);
         }
 
-        // Initialize advert popup
-        showAdvertPopup();
+        // Close modal
+        function closeModal(modal) {
+            modal.style.display = 'none';
+            document.body.classList.remove('modal-open');
+            currentJobToShare = null;
+        }
+
+        // Initialize the app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
 </html>
